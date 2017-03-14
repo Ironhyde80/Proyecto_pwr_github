@@ -9,12 +9,13 @@ $app->get('/', function ($request, $response, $args) {
     return $this->renderer->render($response, 'index.php', $args);
 })->setName('Inicio');
 
-$app->get('/acercade', function ($request, $response, $args) {
-    // Sample log message
-    $this->logger->info("Vista acerca de");
+$app->get('/acercade', function ($request, $response, $args) use ($app){
+    $fecha = date('l dS \o\f F Y h:i:s A');
+    $data = array('nombre' => 'Ayoze Pacheco y Gustavo Lopez Garcia', 'descripcion' => 'Aplicacion orientada a la adminitración de licencias para alumnos por parte de los profesores', 'fecha' =>$fecha);
 
-    // Render index view
-    return $this->renderer->render($response, 'acercade.php', $args);
+
+    $body = $this->view->fetch('acercade.twig.php', $data);
+    return $response->write($body); 
 })->setName('Acerca_de');
 
 $app->get('/upload', function ($request, $response, $args) {
@@ -22,7 +23,7 @@ $app->get('/upload', function ($request, $response, $args) {
     $this->logger->info("Aqui se haran los uploads");
 
     // Render index view
-    return $this->renderer->render($response, 'upload.php', $args);
+    return $this->renderer->render($response, 'upload.twig.php', $args);
 })->setName('Upload');
 
 $app->get('/login', function ($request, $response, $args) {
@@ -30,7 +31,7 @@ $app->get('/login', function ($request, $response, $args) {
     $this->logger->info("Aqui se haran los login");
 
     // Render index view
-    return $this->renderer->render($response, 'login.php', $args);
+    return $this->renderer->render($response, 'login.twig.php', $args);
 })->setName('Login');
 
 $app->get('/logout', function ($request, $response, $args) {
@@ -38,18 +39,18 @@ $app->get('/logout', function ($request, $response, $args) {
     $this->logger->info("Aqui se haran los logout");
 
     // Render index view
-    return $this->renderer->render($response, 'logout.php', $args);
+    return $this->renderer->render($response, 'logout.twig.php', $args);
 })->setName('Logout');
 
 //Agregar ficheros
 $app->get('/agregarFichero', function ($request, $response, $args) {
     // Render index view
-    return $this->renderer->render($response, 'agregarFichero.php', $args);
+    return $this->renderer->render($response, 'agregarFichero.twig.php', $args);
 });
 
 $app->post('/agregarFichero', function ($request, $response, $args) {
     $nombreFichero=$request->getParam('nombreFichero');
     if(preg_match(""))
-    return $this->renderer->render($response, 'agregarFichero.php', $args);
+    return $this->renderer->render($response, 'agregarFichero.twig.php', $args);
 });
 
