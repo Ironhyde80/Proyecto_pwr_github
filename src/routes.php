@@ -41,3 +41,15 @@ $app->get('/logout', function ($request, $response, $args) {
     return $this->renderer->render($response, 'logout.php', $args);
 })->setName('Logout');
 
+//Agregar ficheros
+$app->get('/agregarFichero', function ($request, $response, $args) {
+    // Render index view
+    return $this->renderer->render($response, 'agregarFichero.php', $args);
+});
+
+$app->post('/agregarFichero', function ($request, $response, $args) {
+    $nombreFichero=$request->getParam('nombreFichero');
+    if(preg_match(""))
+    return $this->renderer->render($response, 'agregarFichero.php', $args);
+});
+
