@@ -11,9 +11,9 @@ $app->get('/', function ($request, $response, $args) {
 
 $app->get('/acercade', function ($request, $response, $args) use ($app){
     $fecha = date('l dS \o\f F Y h:i:s A');
-    $data = array('nombre' => 'Ayoze Pacheco y Gustavo Lopez Garcia', 'descripcion' => 'Aplicacion orientada a la adminitración de licencias para alumnos por parte de los profesores', 'fecha' =>$fecha);
-
-
+    $data = array('nombre' => 'Ayoze Pacheco y Gustavo Lopez Garcia',
+                  'descripcion' => 'Aplicacion orientada a la adminitración de licencias para alumnos por parte de los profesores', 
+                  'fecha' =>$fecha);
     $body = $this->view->fetch('acercade.twig.php', $data);
     return $response->write($body); 
 })->setName('Acerca_de');
@@ -23,7 +23,7 @@ $app->get('/upload', function ($request, $response, $args) {
     $this->logger->info("Aqui se haran los uploads");
 
     // Render index view
-    return $this->renderer->render($response, 'upload.twig.php', $args);
+    return $this->view->render($response,'upload.twig.php');
 })->setName('Upload');
 
 $app->get('/login', function ($request, $response, $args) {
@@ -31,7 +31,7 @@ $app->get('/login', function ($request, $response, $args) {
     $this->logger->info("Aqui se haran los login");
 
     // Render index view
-    return $this->renderer->render($response, 'login.twig.php', $args);
+    return $this->view->render($response,'login.twig.php');
 })->setName('Login');
 
 $app->get('/logout', function ($request, $response, $args) {
@@ -39,7 +39,7 @@ $app->get('/logout', function ($request, $response, $args) {
     $this->logger->info("Aqui se haran los logout");
 
     // Render index view
-    return $this->renderer->render($response, 'logout.twig.php', $args);
+    return $this->view->render($response,'logout.twig.php');
 })->setName('Logout');
 
 //Agregar ficheros
