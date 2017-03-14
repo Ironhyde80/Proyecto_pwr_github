@@ -1,5 +1,5 @@
 {% extends 'layout/plantillaBase.twig.php' %}
-{% block title %}Inicio{% endblock %}
+{% block title %}Login{% endblock %}
 {% block body %}
 
 <h3> Login </h3>

@@ -1,6 +1,6 @@
 {% extends 'layout/plantillaBase.twig.php' %}
-{% block title %}Inicio{% endblock %}
+{% block title %}Upload{% endblock %}
 {% block body %}
-Vista Login
+Vista Upload
 
 {% endblock %}
