@@ -48,8 +48,18 @@ $app->get('/agregarFichero', function ($request, $response, $args) {
 });
 
 $app->post('/agregarFichero', function ($request, $response, $args) {
-    $nombreFichero=$request->getParam('nombreFichero');
-    if(preg_match(""))
-    return $this->renderer->render($response, 'agregarFichero.php', $args);
+    $fichero=$request->getParam('ficheroichero');
+    //<input type="file">
+    if($_FILES[$fichero]['error']==0){
+        if($_FILES[$fichero]['type']=='text/xml'){
+
+        }elseif ($_FILES[$fichero]['type']=='text/csv') {
+            
+        }else{
+            //error
+        }
+    }
+    return $this->renderer->render($response, 'agregarFicheroError.php', $args);
+     
 });
 
