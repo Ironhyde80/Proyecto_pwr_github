@@ -35,7 +35,21 @@ class __TwigTemplate_0a80f06ffa30a6f51d343b2fb93ed92eaf8ae9c6108d67e42a447650237
     public function block_body($context, array $blocks = array())
     {
         // line 4
-        echo "Vista Upload
+        echo "\t<h3> Subir fichero </h3>
+
+<form method=\"post\" action=\"\" enctype=\"multipart/form-data\">
+<br><center>
+\t<label for=\"fichero\" >Fichero</label>
+\t<input type=\"file\" name=\"fichero\" id=\"fichero\" placeholder=\"Seleccione un fichero\">
+\t</center>
+\t<center>
+\t\t<button>Enviar</button>
+\t</center>
+\t<label>";
+        // line 14
+        echo twig_escape_filter($this->env, (isset($context["error"]) ? $context["error"] : null), "html", null, true);
+        echo "</label>
+</form>
 
 ";
     }
@@ -52,7 +66,7 @@ class __TwigTemplate_0a80f06ffa30a6f51d343b2fb93ed92eaf8ae9c6108d67e42a447650237
 
     public function getDebugInfo()
     {
-        return array (  38 => 4,  35 => 3,  29 => 2,  11 => 1,);
+        return array (  50 => 14,  38 => 4,  35 => 3,  29 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -68,7 +82,18 @@ class __TwigTemplate_0a80f06ffa30a6f51d343b2fb93ed92eaf8ae9c6108d67e42a447650237
         return new Twig_Source("{% extends 'layout/plantillaBase.twig.php' %}
 {% block title %}Upload{% endblock %}
 {% block body %}
-Vista Upload
+\t<h3> Subir fichero </h3>
+
+<form method=\"post\" action=\"\" enctype=\"multipart/form-data\">
+<br><center>
+\t<label for=\"fichero\" >Fichero</label>
+\t<input type=\"file\" name=\"fichero\" id=\"fichero\" placeholder=\"Seleccione un fichero\">
+\t</center>
+\t<center>
+\t\t<button>Enviar</button>
+\t</center>
+\t<label>{{error}}</label>
+</form>
 
 {% endblock %}", "upload.twig.php", "C:\\wamp64\\www\\Proyecto_pwr_github\\templates\\upload.twig.php");
     }

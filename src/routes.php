@@ -18,14 +18,6 @@ $app->get('/acercade', function ($request, $response, $args) use ($app){
     return $response->write($body); 
 })->setName('Acerca_de');
 
-$app->get('/upload', function ($request, $response, $args) {
-    // Sample log message
-    $this->logger->info("Aqui se haran los uploads");
-
-    // Render index view
-    return $this->view->render($response,'upload.twig.php');
-})->setName('Upload');
-
 $app->get('/login', function ($request, $response, $args) {
     // Sample log message
     $this->logger->info("Aqui se haran los login");
@@ -42,23 +34,30 @@ $app->get('/logout', function ($request, $response, $args) {
     return $this->view->render($response,'logout.twig.php');
 })->setName('Logout');
 
-//Agregar ficheros
-$app->get('/agregarFichero', function ($request, $response, $args) {
-    // Render index view
-    return $this->renderer->render($response, 'agregarFichero.twig.php', $args);
-});
+$app->get('/upload', function ($request, $response, $args) {
+    // Sample log message
+    $this->logger->info("Aqui se haran los uploads");
 
-$app->post('/agregarFichero', function ($request, $response, $args) {
-    $fichero=$request->getParam('ficheroichero');
+    // Render index view
+    return $this->view->render($response,'upload.twig.php');
+})->setName('Upload');
+
+$app->post('/upload', function ($request, $response, $args) {
+    $fichero=$request->getParam('fichero');
     //<input type="file">
     if($_FILES[$fichero]['error']==0){
         if($_FILES[$fichero]['type']=='text/xml'){
-
+                
         }elseif ($_FILES[$fichero]['type']=='text/csv') {
             
         }else{
             //error
         }
+        return $this->view->render($response,'upload.twig.php');
+    }else{
+         $data = array('error' => 'Error: fallo al subir el fichero');
+        $body = $this->view->fetch('upload.twig.php', $error);
+        return $response->write($body); 
     }
-    return $this->renderer->render($response, 'agregarFicheroError.php', $args);
+    
 });
