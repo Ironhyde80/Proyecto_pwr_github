@@ -20,13 +20,13 @@ class Modelo
             die ($e->getMessage());
         }
     }
-    
+
    /* public function listar()
-    {       
+    {
         try
         {
             $result = array();
-            
+
             $stm= $this->library->alumnos();
 
             foreach($stm as $r) {
@@ -40,8 +40,8 @@ class Modelo
                 $result[] = $alm;
             }
             return $result;
-        } 
-        catch(PDOException $e) 
+        }
+        catch(PDOException $e)
         {
             die($e->getMessage());
         }
@@ -66,7 +66,7 @@ class Modelo
         try{
             $stm = $this->orm->licencias();
             $datos = array(
-                "nombre"=> $data->__GET('nombre'),
+                "nombre"=> $data->__GET('nombre'),//sds
                 "clave"=> $data->__GET('clave'),
                 "fecha" =>  $data->__GET('fecha'),
                 "ref_tipo_licencia"=>$data->__GET('ref_tipo_licencia'),
@@ -128,7 +128,7 @@ class Modelo
 
     function ObtenerAlumnos(){
         try
-        {   
+        {
             foreach($this->orm->Alumnos() as $r) {
                 $alumno = new Alumnos();
                 $alumno->__SET('id_alumno',$r['id_alumno']);
@@ -146,9 +146,9 @@ class Modelo
                 $alumnos[]= $alumno;
             }
             return $alumnos;
-            
-        } 
-        catch(Exeption $e) 
+
+        }
+        catch(Exeption $e)
         {
             die($e->getMessage());
         }
@@ -156,7 +156,7 @@ class Modelo
 
     function Obtener_licencias(){
         try
-        {   
+        {
             foreach($this->orm->licencias() as $r) {
                 $licencia = new Licencias();
                 $licencia->__SET('id_licencia',$r['id_licencia']);
@@ -168,9 +168,9 @@ class Modelo
                 $licencias[]= $licencia;
             }
             return $licencias;
-            
-        } 
-        catch(Exeption $e) 
+
+        }
+        catch(Exeption $e)
         {
             die($e->getMessage());
         }
