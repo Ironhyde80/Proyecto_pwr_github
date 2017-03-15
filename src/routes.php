@@ -6,11 +6,11 @@ $prof = new Profesores();
 $model = new Modelo();
 
 
-$app->get('/', function ($request, $response, $args) use($model,$lcn) {
+$app->get('/', function ($request, $response, $args) use($model,$lcn,$aln) {
     // Sample log message
     $this->logger->info("Slim-Skeleton '/' route");
-    $data= array('licencias' => $model->Obtener_licencias(),
-        'licencia' => $lcn);
+    $data= array('alumnos' => $model->ObtenerAlumnos(),
+        'alumno' => $aln);
     // Render index view
     return $this->view->render($response,'index.php',$data);
 })->setName('Inicio');
@@ -54,11 +54,11 @@ $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, 
     if($_FILES['fichero']['error']==0){
 
         $nombre=$_FILES['fichero']['name'];
-        $tamanio = $_FILES['archivo']['size'];
+        $tamanio = $_FILES['fichero']['size'];
 
         if($_FILES['fichero']['type']=='text/xml'){
             $documento= simplexml_load_file($nombre);
-             foreach ($documento->YourKey->Product_Key[0]->Key->item as $key) {
+             foreach ($documento->YourKey->Product_Key->Key->item as $key) {
                   $lcn-> __SET('nombre',$documento->YourKey->Product_Key[0]['Name']); 
                   $lcn->____SET('clave',$documento->YourKey->Product_Key[0]->$key);
                   $lcn->__SET('ref_tipo_licencia',2);
@@ -66,7 +66,7 @@ $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, 
                }  
 
         }elseif ($_FILES['fichero']['type']=='text/csv') {
-            $archivotmp = $_FILES['archivo']['tmp_name'];
+            $archivotmp = $_FILES['fichero']['tmp_name'];
             //cargamos el archivo
             $lineas = file($archivotmp);
 
@@ -110,5 +110,7 @@ $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, 
             //errorvdvd
         }
         return $this->view->render($response,'upload.twig.php');
+    }
     
 });
+

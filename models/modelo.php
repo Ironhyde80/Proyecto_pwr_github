@@ -126,7 +126,7 @@ class Modelo
         }
     }
 
-    function Obtener_alumnos(){
+    function ObtenerAlumnos(){
         try
         {   
             foreach($this->orm->Alumnos() as $r) {

@@ -37,33 +37,32 @@ class __TwigTemplate_cc3a279ae488db115efd0adb0be93522e53f23fc74def4ad7aeb78e2bfc
         // line 4
         echo "\t";
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["licencias"]) ? $context["licencias"] : null));
-        foreach ($context['_seq'] as $context["_key"] => $context["licencia"]) {
-            echo "\t
-\t\t";
+        $context['_seq'] = twig_ensure_traversable((isset($context["alumnos"]) ? $context["alumnos"] : null));
+        foreach ($context['_seq'] as $context["_key"] => $context["alumno"]) {
             // line 5
-            echo twig_escape_filter($this->env, $this->getAttribute($context["licencia"], "__GET", array(0 => "id_licencia"), "method"), "html", null, true);
-            echo "
-\t\t";
+            echo "\t<img src=";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["alumno"], "__GET", array(0 => "url_foto"), "method"), "html", null, true);
+            echo "></img>
+\t\t<p>Alumno: ";
             // line 6
-            echo twig_escape_filter($this->env, $this->getAttribute($context["licencia"], "__GET", array(0 => "nombre"), "method"), "html", null, true);
-            echo "
-\t\t";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["alumno"], "__GET", array(0 => "nombre"), "method"), "html", null, true);
+            echo " ";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["alumno"], "__GET", array(0 => "primer_apellido"), "method"), "html", null, true);
+            echo " ";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["alumno"], "__GET", array(0 => "segundo_apellido"), "method"), "html", null, true);
+            echo "</p>\t
+\t\t<p>Cial: ";
             // line 7
-            echo twig_escape_filter($this->env, $this->getAttribute($context["licencia"], "__GET", array(0 => "clave"), "method"), "html", null, true);
-            echo "
-\t\t";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["alumno"], "__GET", array(0 => "cial"), "method"), "html", null, true);
+            echo "</p>
+\t\t<p>Email: ";
             // line 8
-            echo twig_escape_filter($this->env, $this->getAttribute($context["licencia"], "__GET", array(0 => "fecha"), "method"), "html", null, true);
-            echo "
-\t\t";
-            // line 9
-            echo twig_escape_filter($this->env, $this->getAttribute($context["licencia"], "__GET", array(0 => "ref_tipo_licencia"), "method"), "html", null, true);
-            echo "
+            echo twig_escape_filter($this->env, $this->getAttribute($context["alumno"], "__GET", array(0 => "email"), "method"), "html", null, true);
+            echo "</p>
 \t";
         }
         $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['licencia'], $context['_parent'], $context['loop']);
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['alumno'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
     }
 
@@ -79,7 +78,7 @@ class __TwigTemplate_cc3a279ae488db115efd0adb0be93522e53f23fc74def4ad7aeb78e2bfc
 
     public function getDebugInfo()
     {
-        return array (  61 => 9,  57 => 8,  53 => 7,  49 => 6,  45 => 5,  38 => 4,  35 => 3,  29 => 2,  11 => 1,);
+        return array (  60 => 8,  56 => 7,  48 => 6,  43 => 5,  38 => 4,  35 => 3,  29 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -95,12 +94,11 @@ class __TwigTemplate_cc3a279ae488db115efd0adb0be93522e53f23fc74def4ad7aeb78e2bfc
         return new Twig_Source("{% extends 'layout/plantillaBase.twig.php' %}
 {% block title %}Inicio{% endblock %}
 {% block body %}
-\t{% for licencia in licencias %}\t
-\t\t{{ licencia.__GET('id_licencia') }}
-\t\t{{ licencia.__GET('nombre') }}
-\t\t{{ licencia.__GET('clave') }}
-\t\t{{ licencia.__GET('fecha') }}
-\t\t{{ licencia.__GET('ref_tipo_licencia') }}
+\t{% for alumno in alumnos %}
+\t<img src={{alumno.__GET('url_foto')}}></img>
+\t\t<p>Alumno: {{ alumno.__GET('nombre') }} {{ alumno.__GET('primer_apellido') }} {{ alumno.__GET('segundo_apellido') }}</p>\t
+\t\t<p>Cial: {{ alumno.__GET('cial') }}</p>
+\t\t<p>Email: {{ alumno.__GET('email') }}</p>
 \t{% endfor %}
 {% endblock %}", "index.php", "C:\\wamp64\\www\\Proyecto_pwr_github\\templates\\index.php");
     }
