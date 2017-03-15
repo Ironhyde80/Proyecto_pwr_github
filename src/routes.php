@@ -107,7 +107,7 @@ $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, 
                //cerramos bucle
             }
         }else{
-            //error
+            //errorvdvd
         }
         return $this->view->render($response,'upload.twig.php');
     
