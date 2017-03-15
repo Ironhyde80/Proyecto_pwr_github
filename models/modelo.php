@@ -1,20 +1,24 @@
 <?php
-namespace models\Model;
 
-use lib\Database;
-use lib\Response;
 
 class Modelo
 {
-    private $db;
     private $licencias;
     private $profesores;
     private $alumnos;
-    
-    public function __CONSTRUCT()
-    {
-        $this->db = Database::StartUp();
-        $this->response = new Response();
+    private $orm;
+    private $pdo;
+    //$ruta = './db/sqlite:IESPC.sqlite';
+
+    public function __CONSTRUCT(){
+        try{
+            $this->pdo = new PDO ('mysql:host=localhost;dbname=dblicenses;charset=utf8', 'usuario_proyecto', 'pensarconLOGICA');
+            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->orm = new NotORM($this->pdo);
+        }
+        catch(Exception $e){
+            die ($e->getMessage());
+        }
     }
     
    /* public function listar()
@@ -117,6 +121,21 @@ class Modelo
                 );
             $resultado=$stm->insert($datos);
         } catch (Exception $e)
+        {
+            die($e->getMessage());
+        }
+    }
+
+    function prueba(){
+        try
+        {
+            $result = array();
+            
+            $result= $this->orm->alumnos();
+            
+            return $result;
+        } 
+        catch(PDOException $e) 
         {
             die($e->getMessage());
         }

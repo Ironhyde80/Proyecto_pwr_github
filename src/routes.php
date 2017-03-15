@@ -1,12 +1,17 @@
 <?php
 // Routes
+$aln = new Alumnos();
+$lcn = new Licencias();
+$prof = new Profesores();
+$model = new Modelo();
 
-$app->get('/', function ($request, $response, $args) {
+
+$app->get('/', function ($request, $response, $args) use($model) {
     // Sample log message
     $this->logger->info("Slim-Skeleton '/' route");
-
+    $data= array('listaAlumnos' => $model->prueba());
     // Render index view
-    return $this->renderer->render($response, 'index.php', $args);
+    return $this->renderer->render($response, 'index.php', $data);
 })->setName('Inicio');
 
 $app->get('/acercade', function ($request, $response, $args) use ($app){
