@@ -85,10 +85,7 @@ $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, 
                    leyendo hasta que encuentre un ; */
                    $datos = explode(";",$linea);
              
-                   //Almacenamos los datos que vamos leyendo en una variable
-                   $nombre = trim($datos[0]);
-                   $edad = trim($datos[1]);
-                   $profesion = trim($datos[2]);
+                   //Almacenamos los datos que vamos leyendo en una variable;
 
                   $prof-> __SET('ref_departamento',trim($datos[0])); 
                   $prof-> __SET('dni',trim($datos[1]));
