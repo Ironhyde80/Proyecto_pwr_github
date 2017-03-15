@@ -50,11 +50,16 @@ $app->get('/upload', function ($request, $response, $args) {
 
 $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, $prof, $lcn){
     //<input type="file">
+print_r ($_FILES);
+    
 
     if($_FILES['fichero']['error']==0){
 
-        $nombre=$_FILES['fichero']['name'];
+        $nombre=$_FILES['fichero']['tmp_name'];
         $tamanio = $_FILES['fichero']['size'];
+        $url= 'http://localhost/Proyecto_pwr_github/ficheros_subidos/';
+        
+        move_uploaded_file ( $nombre , $url );
 
         if($_FILES['fichero']['type']=='text/xml'){
             $documento= simplexml_load_file($nombre);
