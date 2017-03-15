@@ -64,7 +64,7 @@ class Modelo
     //Para cargar xml(Realizar en controlador)->http://web.tursos.com/como-leer-un-archivo-xml-con-php/
     {
         try{
-            $stm = $this->licencias->licencias();
+            $stm = $this->orm->licencias();
             $datos = array(
                 "nombre"=> $data->__GET('nombre'),
                 "clave"=> $data->__GET('clave'),
@@ -81,7 +81,7 @@ class Modelo
     public function AñadirProfesores(Profesores $data)
     {
         try{
-            $stm = $this->profesores->profesores();
+            $stm = $this->orm->profesores();
             $datos = array(
                 "dni"=> $data->__GET('dni'),
                 "nombre"=> $data->__GET('nombre'),
@@ -105,7 +105,7 @@ class Modelo
     public function AñadirAlumnos(Alumnos $data)
     {
         try{
-            $stm = $this->alumnos->alumnos();
+            $stm = $this->orm->alumnos();
             $datos = array(
                 "nombre"=> $data->__GET('nombre'),
                 "primer_apellido"=> $data->__GET('primer_apellido'),
@@ -126,16 +126,23 @@ class Modelo
         }
     }
 
-    function prueba(){
+    function Obtener_licencias(){
         try
-        {
-            $result = array();
+        {   
+            foreach($this->orm->licencias() as $r) {
+                $licencia = new Licencias();
+                $licencia->__SET('id_licencia',$r['id_licencia']);
+                $licencia->__SET('nombre',$r['nombre']);
+                $licencia->__SET('clave',$r['clave']);
+                $licencia->__SET('fecha',$r['fecha_insercion']);
+                $licencia->__SET('ref_tipo_licencia',$r['ref_tipo_licencia']);
+
+                $licencias[]= $licencia;
+            }
+            return $licencias;
             
-            $result= $this->orm->alumnos();
-            
-            return $result;
         } 
-        catch(PDOException $e) 
+        catch(Exeption $e) 
         {
             die($e->getMessage());
         }
