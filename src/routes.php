@@ -11,7 +11,7 @@ $app->get('/', function ($request, $response, $args) use($model) {
     $this->logger->info("Slim-Skeleton '/' route");
     $data= array('listaAlumnos' => $model->prueba());
     // Render index view
-    return $this->renderer->render($response, 'index.php', $data);
+    return $this->view->render($response,'index.php');
 })->setName('Inicio');
 
 $app->get('/acercade', function ($request, $response, $args) use ($app){
