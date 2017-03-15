@@ -51,7 +51,8 @@ $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, 
     //<input type="file">
     if($_FILES['fichero']['error']==0){
         if($_FILES['fichero']['type']=='text/xml'){
-            $documento= simplexml_load_file($_FILES['fichero']['name']);
+            $nombre=$_FILES['fichero']['tmp_name'];
+            $documento= simplexml_load_file($nombre);
              foreach ($documento->YourKey->Product_Key[0]->Key->item as $key) {
                   $lcn-> __SET('nombre',$documento->YourKey->Product_Key[0]['Name']); 
                   $lcn->____SET('clave',$documento->YourKey->Product_Key[0]->$key);
