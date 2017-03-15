@@ -47,19 +47,17 @@ $app->get('/upload', function ($request, $response, $args) {
     return $this->view->render($response,'upload.twig.php');
 })->setName('Upload');
 
-$app->post('/upload', function ($request, $response, $args)  {
+$app->post('/upload', function ($request, $response, $args)  use ($aln, $model, $prof, $lcn){
     //<input type="file">
     if($_FILES['fichero']['error']==0){
         if($_FILES['fichero']['type']=='text/xml'){
-              $documento= simplexml_load_file($_FILES['fichero']['name']);
-               $alum-> __SET('id',     $_REQUEST['id']);
-    $alum-> __SET('nombre',     $_REQUEST['Nombre']);
-    $alum-> __SET('apellidos',     $_REQUEST['Apellidos']);
-    $alum-> __SET('telefono',     $_REQUEST['Telefono']);
-
-    $model->Actualizar($alum);
-
-              $documento->YourKey->Product_Key[0]['Name'];
+            $documento= simplexml_load_file($_FILES['fichero']['name']);
+             foreach ($documento->YourKey->Product_Key[0]->Key->item as $key) {
+                  $lcn-> __SET('nombre',$documento->YourKey->Product_Key[0]['Name']); 
+                  $lcn->____SET('clave',$documento->YourKey->Product_Key[0]->$key);
+                  $lcn->__SET('ref_tipo_licencia',2);
+                  $model->AñadirLicencias($lcn);
+               }  
         }elseif ($_FILES['fichero']['type']=='text/csv') {
             
         }else{
