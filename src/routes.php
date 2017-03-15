@@ -42,13 +42,20 @@ $app->get('/upload', function ($request, $response, $args) {
     return $this->view->render($response,'upload.twig.php');
 })->setName('Upload');
 
-$app->post('/upload', function ($request, $response, $args) {
-    $fichero=$request->getParam('fichero');
+$app->post('/upload', function ($request, $response, $args)  {
     //<input type="file">
-    if($_FILES[$fichero]['error']==0){
-        if($_FILES[$fichero]['type']=='text/xml'){
-                
-        }elseif ($_FILES[$fichero]['type']=='text/csv') {
+    if($_FILES['fichero']['error']==0){
+        if($_FILES['fichero']['type']=='text/xml'){
+              $documento= simplexml_load_file($_FILES['fichero']['name']);
+               $alum-> __SET('id',     $_REQUEST['id']);
+    $alum-> __SET('nombre',     $_REQUEST['Nombre']);
+    $alum-> __SET('apellidos',     $_REQUEST['Apellidos']);
+    $alum-> __SET('telefono',     $_REQUEST['Telefono']);
+
+    $model->Actualizar($alum);
+
+              $documento->YourKey->Product_Key[0]['Name'];
+        }elseif ($_FILES['fichero']['type']=='text/csv') {
             
         }else{
             //error
