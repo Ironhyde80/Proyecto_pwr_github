@@ -6,12 +6,13 @@ $prof = new Profesores();
 $model = new Modelo();
 
 
-$app->get('/', function ($request, $response, $args) use($model) {
+$app->get('/', function ($request, $response, $args) use($model,$lcn) {
     // Sample log message
     $this->logger->info("Slim-Skeleton '/' route");
-    $data= array('listaAlumnos' => $model->prueba());
+    $data= array('licencias' => $model->Obtener_licencias(),
+        'licencia' => $lcn);
     // Render index view
-    return $this->view->render($response,'index.php');
+    return $this->view->render($response,'index.php',$data);
 })->setName('Inicio');
 
 $app->get('/acercade', function ($request, $response, $args) use ($app){
@@ -49,7 +50,6 @@ $app->get('/upload', function ($request, $response, $args) {
 
 $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, $prof, $lcn){
     //<input type="file">
-    if($_FILES['fichero']['error']==0){
         if($_FILES['fichero']['type']=='text/xml'){
             $documento= simplexml_load_file($_FILES['fichero']['name']);
              foreach ($documento->YourKey->Product_Key[0]->Key->item as $key) {
@@ -64,10 +64,5 @@ $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, 
             //error
         }
         return $this->view->render($response,'upload.twig.php');
-    }else{
-         $data = array('error' => 'Error: fallo al subir el fichero');
-        $body = $this->view->fetch('upload.twig.php', $error);
-        return $response->write($body); 
-    }
     
 });
