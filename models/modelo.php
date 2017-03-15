@@ -68,10 +68,9 @@ class Modelo
             $datos = array(
                 "nombre"=> $data->__GET('nombre'),//sds
                 "clave"=> $data->__GET('clave'),
-                "fecha" =>  $data->__GET('fecha'),
                 "ref_tipo_licencia"=>$data->__GET('ref_tipo_licencia'),
                 );
-            $resultado=$stm->insert($datos);
+            $stm->insert($datos);
         } catch (Exception $e)
         {
             die($e->getMessage());

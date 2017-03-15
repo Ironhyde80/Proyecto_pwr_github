@@ -50,22 +50,21 @@ $app->get('/upload', function ($request, $response, $args) {
 
 $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, $prof, $lcn){
     //<input type="file">
-print_r ($_FILES);
-    
-
+             
     if($_FILES['fichero']['error']==0){
 
-        $nombre=$_FILES['fichero']['tmp_name'];
+        $nombre=$_FILES['fichero']['name'];
         $tamanio = $_FILES['fichero']['size'];
-        $url= 'http://localhost/Proyecto_pwr_github/ficheros_subidos/';
+        $temporal= $_FILES['fichero']['tmp_name'];
+        $subidos= "C:\wamp64\www\Proyecto_pwr_github\icheros_subidos";
         
-        move_uploaded_file ( $nombre , $url );
+        //copy($temporal,$subidos);
 
         if($_FILES['fichero']['type']=='text/xml'){
-            $documento= simplexml_load_file($nombre);
-             foreach ($documento->YourKey->Product_Key->Key->item as $key) {
-                  $lcn-> __SET('nombre',$documento->YourKey->Product_Key[0]['Name']); 
-                  $lcn->____SET('clave',$documento->YourKey->Product_Key[0]->$key);
+            $documento= simplexml_load_file('C:\wamp64\www\Proyecto_pwr_github\keysW7.xml');
+             foreach ($documento->Product_Key as $k) {
+                  $lcn-> __SET('nombre',$k['Name']); 
+                  $lcn->__SET('clave',(string)$k->Key);
                   $lcn->__SET('ref_tipo_licencia',2);
                   $model->AñadirLicencias($lcn);
                }  
