@@ -40,7 +40,7 @@ class __TwigTemplate_0a80f06ffa30a6f51d343b2fb93ed92eaf8ae9c6108d67e42a447650237
 <form method=\"post\" action=\"\" enctype=\"multipart/form-data\">
 <br><center>
 \t<label for=\"fichero\" >Fichero</label>
-\t<input type=\"file\" name=\"fichero\" id=\"fichero\" placeholder=\"Seleccione un fichero\" accept=\".xml,.csv\">
+\t<input type=\"file\" name=\"fichero\" id=\"fichero\" placeholder=\"Seleccione un fichero\" accept=\".csv\"/>
 \t</center>
 \t<center>
 \t\t<button>Enviar</button>
@@ -50,7 +50,12 @@ class __TwigTemplate_0a80f06ffa30a6f51d343b2fb93ed92eaf8ae9c6108d67e42a447650237
         echo twig_escape_filter($this->env, (isset($context["error"]) ? $context["error"] : null), "html", null, true);
         echo "</label>
 </form>
-
+<script>
+\t\talert('";
+        // line 17
+        echo twig_escape_filter($this->env, (isset($context["exito"]) ? $context["exito"] : null), "html", null, true);
+        echo "');
+\t</script>
 ";
     }
 
@@ -66,7 +71,7 @@ class __TwigTemplate_0a80f06ffa30a6f51d343b2fb93ed92eaf8ae9c6108d67e42a447650237
 
     public function getDebugInfo()
     {
-        return array (  50 => 14,  38 => 4,  35 => 3,  29 => 2,  11 => 1,);
+        return array (  56 => 17,  50 => 14,  38 => 4,  35 => 3,  29 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -87,14 +92,17 @@ class __TwigTemplate_0a80f06ffa30a6f51d343b2fb93ed92eaf8ae9c6108d67e42a447650237
 <form method=\"post\" action=\"\" enctype=\"multipart/form-data\">
 <br><center>
 \t<label for=\"fichero\" >Fichero</label>
-\t<input type=\"file\" name=\"fichero\" id=\"fichero\" placeholder=\"Seleccione un fichero\" accept=\".xml,.csv\">
+\t<input type=\"file\" name=\"fichero\" id=\"fichero\" placeholder=\"Seleccione un fichero\" accept=\".csv\"/>
 \t</center>
 \t<center>
 \t\t<button>Enviar</button>
 \t</center>
 \t<label>{{error}}</label>
 </form>
-
-{% endblock %}", "upload.twig.php", "C:\\wamp64\\www\\Proyecto_pwr_github\\templates\\upload.twig.php");
+<script>
+\t\talert('{{exito}}');
+\t</script>
+{% endblock %}
+", "upload.twig.php", "C:\\wamp64\\www\\Proyecto_pwr_github\\templates\\upload.twig.php");
     }
 }

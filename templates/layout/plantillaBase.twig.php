@@ -4,11 +4,11 @@
 	<meta charset="UTF-8">
 	<title>{% block title %}Gestor de licencias{% endblock %}</title>
 
-	<script type="text/javascript" src="{{base_url()}}/assets/jquery-2.2.1/jquery-2.2.1.min.js"></script>			
+	<script type="text/javascript" src="{{base_url()}}/../assets/jquery-2.2.1/jquery-2.2.1.min.js"></script>			
 	<!-- Bootstrap -->
-	<link rel="stylesheet" href="{{base_url()}}/assets/bootstrap-3.3.6-dist/css/bootstrap.min.css">
-	<script type="text/javascript" src="{{base_url()}}/assets/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="{{base_url()}}/assets/jquery-3.1.1.js"></script>
+	<link rel="stylesheet" href="{{base_url()}}/../assets/bootstrap-3.3.6-dist/css/bootstrap.min.css">
+	<script type="text/javascript" src="{{base_url()}}/../assets/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="{{base_url()}}/../assets/jquery-3.1.1.js"></script>
 </head>
 <body>
 	<div class="well" align="center"><h2>FICHA DE CLASE:</h2>
@@ -28,7 +28,7 @@
 		<hr>
 	</div>
 	<div align="center">
-		&copy;2016 Todos los derechos reservados
+		&copy;2017 Todos los derechos reservados
 	</div>
 </body>
 </html>

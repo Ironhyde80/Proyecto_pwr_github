@@ -7,4 +7,5 @@
 		<p>Cial: {{ alumno.__GET('cial') }}</p>
 		<p>Email: {{ alumno.__GET('email') }}</p>
 	{% endfor %}
+	
 {% endblock %}

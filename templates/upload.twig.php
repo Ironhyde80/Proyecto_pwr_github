@@ -6,12 +6,14 @@
 <form method="post" action="" enctype="multipart/form-data">
 <br><center>
 	<label for="fichero" >Fichero</label>
-	<input type="file" name="fichero" id="fichero" placeholder="Seleccione un fichero" accept=".xml,.csv">
+	<input type="file" name="fichero" id="fichero" placeholder="Seleccione un fichero" accept=".csv"/>
 	</center>
 	<center>
 		<button>Enviar</button>
 	</center>
 	<label>{{error}}</label>
 </form>
-
+<script>
+		alert('{{exito}}');
+	</script>
 {% endblock %}

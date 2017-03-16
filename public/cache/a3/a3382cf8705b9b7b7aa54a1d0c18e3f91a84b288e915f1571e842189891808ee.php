@@ -30,20 +30,20 @@ class __TwigTemplate_8afbab084251e1411bb165a4f590fd9b622ae97385592f1d9233cb36e2d
 \t<script type=\"text/javascript\" src=\"";
         // line 7
         echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->baseUrl(), "html", null, true);
-        echo "/assets/jquery-2.2.1/jquery-2.2.1.min.js\"></script>\t\t\t
+        echo "/../assets/jquery-2.2.1/jquery-2.2.1.min.js\"></script>\t\t\t
 \t<!-- Bootstrap -->
 \t<link rel=\"stylesheet\" href=\"";
         // line 9
         echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->baseUrl(), "html", null, true);
-        echo "/assets/bootstrap-3.3.6-dist/css/bootstrap.min.css\">
+        echo "/../assets/bootstrap-3.3.6-dist/css/bootstrap.min.css\">
 \t<script type=\"text/javascript\" src=\"";
         // line 10
         echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->baseUrl(), "html", null, true);
-        echo "/assets/bootstrap-3.3.6-dist/js/bootstrap.min.js\"></script>
+        echo "/../assets/bootstrap-3.3.6-dist/js/bootstrap.min.js\"></script>
 \t<script type=\"text/javascript\" src=\"";
         // line 11
         echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->baseUrl(), "html", null, true);
-        echo "/assets/jquery-3.1.1.js\"></script>
+        echo "/../assets/jquery-3.1.1.js\"></script>
 </head>
 <body>
 \t<div class=\"well\" align=\"center\"><h2>FICHA DE CLASE:</h2>
@@ -89,7 +89,7 @@ class __TwigTemplate_8afbab084251e1411bb165a4f590fd9b622ae97385592f1d9233cb36e2d
         echo "\t\t<hr>
 \t</div>
 \t<div align=\"center\">
-\t\t&copy;2016 Todos los derechos reservados
+\t\t&copy;2017 Todos los derechos reservados
 \t</div>
 </body>
 </html>";
@@ -137,11 +137,11 @@ class __TwigTemplate_8afbab084251e1411bb165a4f590fd9b622ae97385592f1d9233cb36e2d
 \t<meta charset=\"UTF-8\">
 \t<title>{% block title %}Gestor de licencias{% endblock %}</title>
 
-\t<script type=\"text/javascript\" src=\"{{base_url()}}/assets/jquery-2.2.1/jquery-2.2.1.min.js\"></script>\t\t\t
+\t<script type=\"text/javascript\" src=\"{{base_url()}}/../assets/jquery-2.2.1/jquery-2.2.1.min.js\"></script>\t\t\t
 \t<!-- Bootstrap -->
-\t<link rel=\"stylesheet\" href=\"{{base_url()}}/assets/bootstrap-3.3.6-dist/css/bootstrap.min.css\">
-\t<script type=\"text/javascript\" src=\"{{base_url()}}/assets/bootstrap-3.3.6-dist/js/bootstrap.min.js\"></script>
-\t<script type=\"text/javascript\" src=\"{{base_url()}}/assets/jquery-3.1.1.js\"></script>
+\t<link rel=\"stylesheet\" href=\"{{base_url()}}/../assets/bootstrap-3.3.6-dist/css/bootstrap.min.css\">
+\t<script type=\"text/javascript\" src=\"{{base_url()}}/../assets/bootstrap-3.3.6-dist/js/bootstrap.min.js\"></script>
+\t<script type=\"text/javascript\" src=\"{{base_url()}}/../assets/jquery-3.1.1.js\"></script>
 </head>
 <body>
 \t<div class=\"well\" align=\"center\"><h2>FICHA DE CLASE:</h2>
@@ -161,7 +161,7 @@ class __TwigTemplate_8afbab084251e1411bb165a4f590fd9b622ae97385592f1d9233cb36e2d
 \t\t<hr>
 \t</div>
 \t<div align=\"center\">
-\t\t&copy;2016 Todos los derechos reservados
+\t\t&copy;2017 Todos los derechos reservados
 \t</div>
 </body>
 </html>", "layout/plantillaBase.twig.php", "C:\\wamp64\\www\\Proyecto_pwr_github\\templates\\layout\\plantillaBase.twig.php");

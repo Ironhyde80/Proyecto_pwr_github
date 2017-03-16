@@ -122,7 +122,8 @@ $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, 
                //cerramos bucle
             }
         }
-        return $this->view->render($response,'upload.twig.php');
+        $data = array('exito' => "Correcto");
+        return $this->view->render($response,'upload.twig.php',$data);
     }
     
 });
