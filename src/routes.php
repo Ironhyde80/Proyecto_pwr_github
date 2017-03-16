@@ -50,11 +50,16 @@ $app->get('/upload', function ($request, $response, $args) {
 
 $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, $prof, $lcn){
     //<input type="file">
+print_r ($_FILES);
+    
 
     if($_FILES['fichero']['error']==0){
 
-        $nombre=$_FILES['fichero']['name'];
+        $nombre=$_FILES['fichero']['tmp_name'];
         $tamanio = $_FILES['fichero']['size'];
+        $url= 'http://localhost/Proyecto_pwr_github/ficheros_subidos/';
+        
+        move_uploaded_file ( $nombre , $url );
 
         if($_FILES['fichero']['type']=='text/xml'){
             $documento= simplexml_load_file($nombre);
@@ -85,10 +90,7 @@ $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, 
                    leyendo hasta que encuentre un ; */
                    $datos = explode(";",$linea);
              
-                   //Almacenamos los datos que vamos leyendo en una variable
-                   $nombre = trim($datos[0]);
-                   $edad = trim($datos[1]);
-                   $profesion = trim($datos[2]);
+                   //Almacenamos los datos que vamos leyendo en una variable;
 
                   $prof-> __SET('ref_departamento',trim($datos[0])); 
                   $prof-> __SET('dni',trim($datos[1]));
