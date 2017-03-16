@@ -66,7 +66,9 @@ $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, 
                   //$lcn-> __SET('nombre',(string)$k['Name']); 
                   $lcn->__SET('clave',(string)$k);
                   $lcn->__SET('ref_tipo_licencia',2);
-                  $model->AñadirLicencias($lcn);
+                  if($model->ComprobarLicencias($lcn)==false){
+                        $model->AñadirLicencias($lcn);
+                  }
                }  
         }elseif ($_FILES['fichero']['type']=='text/csv') {
             $archivotmp = $_FILES['fichero']['tmp_name'];
