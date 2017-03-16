@@ -63,14 +63,18 @@ class Modelo
     public function ComprobarLicencias(Licencias $data){
         $clave = $data->__GET('clave');
         $stm = $this->orm->licencias()->where("clave = ?",$clave);
-        $subido = "";
+        $subido_clave = "";
+        $subido_lote = "";
+
         foreach($stm as $r) {
-                $o = $r['clave'];
+                $subido_clave = $r['clave'];
+                $subido_lote = $r['nombre'];
             }
-        if ($subido != "") {
+        if ($subido_clave != "" || $subido_lote != "") {
             return true;
         }else{
             return false;
+            
         }
     }
 
