@@ -106,8 +106,7 @@ $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, 
                   $prof-> __SET('email',trim($datos[7])); 
                   if($datos[9]!=''){
                     $prof-> __SET('tutor',1); 
-                  }
-                       
+                  }  
                   $model->AñadirProfesores($prof);
                   /*print_r ($prof);*/
                }
