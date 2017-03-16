@@ -62,8 +62,8 @@ $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, 
 
         if($_FILES['fichero']['type']=='text/xml'){
             $documento= simplexml_load_file('C:\wamp64\www\Proyecto_pwr_github\keysW7.xml');
-             foreach ($documento->Product_Key as $k) {
-                  $lcn-> __SET('nombre',$k['Name']); 
+             foreach ($documento->Product_Key->Key as $k) {
+                  $lcn-> __SET('nombre',$nombre); 
                   $lcn->__SET('clave',(string)$k->Key);
                   $lcn->__SET('ref_tipo_licencia',2);
                   $model->AñadirLicencias($lcn);
