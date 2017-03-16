@@ -59,13 +59,7 @@ class Modelo
             die($e->getMessage());
         }
     }*/
-    public function ComprobarLicencias(Licencias $data){
-        $stm = $this->orm->licencias->where("clave = ?",$clave);
-        $clave = $data->__('clave');
-        if ($stm != ) {
-            # code...
-        }
-    }
+ 
     public function AñadirLicencias(Licencias $data)
     //Para cargar xml(Realizar en controlador)->http://web.tursos.com/como-leer-un-archivo-xml-con-php/
     {

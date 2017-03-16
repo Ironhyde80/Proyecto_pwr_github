@@ -71,7 +71,7 @@ $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, 
         }elseif ($_FILES['fichero']['type']=='text/csv') {
             $archivotmp = $_FILES['fichero']['tmp_name'];
             //cargamos el archivo
-            $lineas = file($archivotmp);
+            $lineas = file("C:\wamp64\www\Proyecto_pwr_github\'.$nombre.'");
 
             $i=0;
  
@@ -90,15 +90,15 @@ $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, 
              
                    //Almacenamos los datos que vamos leyendo en una variable;
 
-                  $prof-> __SET('ref_departamento',trim($datos[0])); 
-                  $prof-> __SET('dni',trim($datos[1]));
-                  $prof-> __SET('nombre',trim($datos[2]));
-                  $prof-> __SET('primer_apellido',trim($datos[3])); 
-                  $prof-> __SET('segundo_apellido',trim($datos[4]));
-                  $prof-> __SET('telefono',trim($datos[5]));
-                  $prof-> __SET('email',trim($datos[7]));
-                  $prof-> __SET('email',trim($datos[9]));     
-                  $model->AñadirLicencias($prof);
+                  $prof-> __SET('ref_departamento',$datos[0]); 
+                  $prof-> __SET('dni',$datos[1]);
+                  $prof-> __SET('nombre',$datos[2]);
+                  $prof-> __SET('primer_apellido',$datos[3]); 
+                  $prof-> __SET('segundo_apellido',$datos[4]);
+                  $prof-> __SET('telefono',$datos[5]);
+                  $prof-> __SET('email',$datos[7]);
+                  $prof-> __SET('email',$datos[9]);     
+                  $model->AñadirProfesores($prof);
                }
              
                /*Cuando pase la primera pasada se incrementará nuestro valor y a la siguiente pasada ya 
