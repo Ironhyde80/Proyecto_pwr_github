@@ -126,5 +126,9 @@
 [2017-03-16 15:03:23] slim-app.INFO: Aqui se haran los uploads [] {"uid":"df4d993"}
 [2017-03-16 15:03:27] slim-app.INFO: Slim-Skeleton '/' route [] {"uid":"df6a202"}
 >>>>>>> origin/master
+<<<<<<< HEAD
 [2017-03-16 15:09:24] slim-app.INFO: Slim-Skeleton '/' route [] {"uid":"5724450"}
 [2017-03-16 15:09:54] slim-app.INFO: Slim-Skeleton '/' route [] {"uid":"b82ce2c"}
+=======
+[2017-03-16 15:07:57] slim-app.INFO: Aqui se haran los uploads [] {"uid":"fbf86c5"}
+>>>>>>> origin/master
