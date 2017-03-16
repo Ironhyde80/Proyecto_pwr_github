@@ -104,8 +104,10 @@ $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, 
                   $prof-> __SET('segundo_apellido',trim($datos[4])); 
                   $prof-> __SET('telefono',trim($datos[5])); 
                   $prof-> __SET('email',trim($datos[7])); 
-                  if($datos[9]!=''){
+                  if(trim($datos[9]) != ''){
                     $prof-> __SET('tutor',1); 
+                  }else{
+                    $prof-> __SET('tutor',0); 
                   }
                   if($model->ComprobarProfesores($prof)==false){
                         $model->AñadirProfesores($prof);
