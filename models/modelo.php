@@ -63,13 +63,36 @@ class Modelo
 
     public function ComprobarLicencias(Licencias $data){
         $clave = $data->__GET('clave');
-        $stm = $this->orm->licencias->where("clave = ?",$clave);
-        if ($stm != 0) {
+        $stm = $this->orm->licencias()->where("clave = ?",$clave);
+        $subido_clave = "";
+        $subido_lote = "";
+
+        foreach($stm as $r) {
+                $subido_clave = $r['clave'];
+                $subido_lote = $r['nombre'];
+            }
+        if ($subido_clave != "" || $subido_lote != "") {
             return true;
         }else{
             return false;
+            
         }
-        
+    }
+
+    public function ComprobarProfesores(Profesores $data){
+        $dni = $data->__GET('dni');
+        $stm = $this->orm->profesores()->where("dni = ?",$dni);
+        $subido_profesor = "";
+
+        foreach($stm as $r) {
+                $subido_profesor = $r['dni'];
+            }
+        if ($subido_profesor != "") {
+            return true;
+        }else{
+            return false;
+            
+        }
     }
 
     public function AñadirLicencias(Licencias $data)
