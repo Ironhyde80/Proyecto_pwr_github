@@ -6,7 +6,7 @@
 <form method="post" action="" enctype="multipart/form-data">
 <br><center>
 	<label for="fichero" >Fichero</label>
-	<input type="file" name="fichero" id="fichero" placeholder="Seleccione un fichero">
+	<input type="file" name="fichero" id="fichero" placeholder="Seleccione un fichero" accept=".xml,.csv">
 	</center>
 	<center>
 		<button>Enviar</button>

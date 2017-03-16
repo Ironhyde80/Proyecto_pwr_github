@@ -40,7 +40,7 @@ class __TwigTemplate_0a80f06ffa30a6f51d343b2fb93ed92eaf8ae9c6108d67e42a447650237
 <form method=\"post\" action=\"\" enctype=\"multipart/form-data\">
 <br><center>
 \t<label for=\"fichero\" >Fichero</label>
-\t<input type=\"file\" name=\"fichero\" id=\"fichero\" placeholder=\"Seleccione un fichero\">
+\t<input type=\"file\" name=\"fichero\" id=\"fichero\" placeholder=\"Seleccione un fichero\" accept=\".xml,.csv\">
 \t</center>
 \t<center>
 \t\t<button>Enviar</button>
@@ -87,7 +87,7 @@ class __TwigTemplate_0a80f06ffa30a6f51d343b2fb93ed92eaf8ae9c6108d67e42a447650237
 <form method=\"post\" action=\"\" enctype=\"multipart/form-data\">
 <br><center>
 \t<label for=\"fichero\" >Fichero</label>
-\t<input type=\"file\" name=\"fichero\" id=\"fichero\" placeholder=\"Seleccione un fichero\">
+\t<input type=\"file\" name=\"fichero\" id=\"fichero\" placeholder=\"Seleccione un fichero\" accept=\".xml,.csv\">
 \t</center>
 \t<center>
 \t\t<button>Enviar</button>
