@@ -78,6 +78,22 @@ class Modelo
         }
     }
 
+    public function ComprobarProfesores(Profesores $data){
+        $dni = $data->__GET('dni');
+        $stm = $this->orm->profesores()->where("dni = ?",$dni);
+        $subido_profesor = "";
+
+        foreach($stm as $r) {
+                $subido_profesor = $r['dni'];
+            }
+        if ($subido_profesor != "") {
+            return true;
+        }else{
+            return false;
+            
+        }
+    }
+
     public function AñadirLicencias(Licencias $data)
     //Para cargar xml(Realizar en controlador)->http://web.tursos.com/como-leer-un-archivo-xml-con-php/
     {
