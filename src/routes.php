@@ -50,7 +50,6 @@ $app->get('/upload', function ($request, $response, $args) {
 
 $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, $prof, $lcn){
     //<input type="file">
-             
     if($_FILES['fichero']['error']==0){
 
         $nombre=$_FILES['fichero']['name'];
@@ -62,13 +61,13 @@ $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, 
 
         if($_FILES['fichero']['type']=='text/xml'){
             $documento= simplexml_load_file('C:\wamp64\www\Proyecto_pwr_github\keysW7.xml');
-             foreach ($documento->Product_Key as $k) {
-                  $lcn-> __SET('nombre',$k['Name']); 
-                  $lcn->__SET('clave',(string)$k->Key);
+             foreach ($documento->Product_Key->Key as $k) {
+                  $lcn->__SET('nombre',$nombre);
+                  //$lcn-> __SET('nombre',(string)$k['Name']); 
+                  $lcn->__SET('clave',(string)$k);
                   $lcn->__SET('ref_tipo_licencia',2);
                   $model->AñadirLicencias($lcn);
                }  
-
         }elseif ($_FILES['fichero']['type']=='text/csv') {
             $archivotmp = $_FILES['fichero']['tmp_name'];
             //cargamos el archivo
