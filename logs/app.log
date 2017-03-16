@@ -84,18 +84,25 @@
 [2017-03-15 16:21:14] slim-app.INFO: Slim-Skeleton '/' route [] {"uid":"782fd4c"}
 [2017-03-15 16:21:39] slim-app.INFO: Slim-Skeleton '/' route [] {"uid":"e01f685"}
 [2017-03-15 16:22:13] slim-app.INFO: Slim-Skeleton '/' route [] {"uid":"7ba9004"}
+<<<<<<< HEAD
+[2017-03-15 16:37:05] slim-app.INFO: Aqui se haran los uploads [] {"uid":"77de760"}
+=======
 [2017-03-15 16:33:40] slim-app.INFO: Slim-Skeleton '/' route [] {"uid":"6eb21e9"}
 [2017-03-15 16:34:16] slim-app.INFO: Aqui se haran los uploads [] {"uid":"afa18ac"}
 [2017-03-15 16:38:06] slim-app.INFO: Slim-Skeleton '/' route [] {"uid":"e05d62b"}
 [2017-03-15 16:38:37] slim-app.INFO: Aqui se haran los uploads [] {"uid":"35e5f60"}
 [2017-03-15 16:59:21] slim-app.INFO: Slim-Skeleton '/' route [] {"uid":"8310884"}
 [2017-03-15 16:59:34] slim-app.INFO: Aqui se haran los uploads [] {"uid":"2b15776"}
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
 [2017-03-15 17:35:23] slim-app.INFO: Slim-Skeleton '/' route [] {"uid":"ab5701b"}
 [2017-03-15 17:35:43] slim-app.INFO: Aqui se haran los uploads [] {"uid":"2023cee"}
 [2017-03-15 17:37:04] slim-app.INFO: Slim-Skeleton '/' route [] {"uid":"9aa8fb6"}
 [2017-03-15 17:37:11] slim-app.INFO: Aqui se haran los uploads [] {"uid":"c002dc0"}
 [2017-03-15 18:02:07] slim-app.INFO: Slim-Skeleton '/' route [] {"uid":"430a2a8"}
 [2017-03-15 18:02:13] slim-app.INFO: Aqui se haran los uploads [] {"uid":"dcda243"}
+<<<<<<< HEAD
 [2017-03-16 14:38:52] slim-app.INFO: Aqui se haran los uploads [] {"uid":"5d8f0c7"}
 [2017-03-16 14:38:53] slim-app.INFO: Aqui se haran los uploads [] {"uid":"5ad07ba"}
 [2017-03-16 14:40:25] slim-app.INFO: Aqui se haran los uploads [] {"uid":"d01bf39"}
@@ -105,3 +112,10 @@
 [2017-03-16 14:43:10] slim-app.INFO: Slim-Skeleton '/' route [] {"uid":"29419ff"}
 [2017-03-16 14:43:16] slim-app.INFO: Aqui se haran los uploads [] {"uid":"f088006"}
 [2017-03-16 14:44:38] slim-app.INFO: Aqui se haran los uploads [] {"uid":"1d966ac"}
+=======
+>>>>>>> origin/master
+[2017-03-16 14:32:40] slim-app.INFO: Slim-Skeleton '/' route [] {"uid":"08a635d"}
+[2017-03-16 14:32:49] slim-app.INFO: Aqui se haran los uploads [] {"uid":"2e8e572"}
+[2017-03-16 14:46:55] slim-app.INFO: Slim-Skeleton '/' route [] {"uid":"32900c0"}
+[2017-03-16 14:47:02] slim-app.INFO: Aqui se haran los uploads [] {"uid":"2925954"}
+>>>>>>> origin/master
