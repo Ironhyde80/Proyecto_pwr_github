@@ -12,8 +12,9 @@ class Modelo
 
     public function __CONSTRUCT(){
         try{
-            $this->pdo = new PDO ('mysql:host=localhost;dbname=dblicenses;charset=utf8', 'usuario_proyecto', 'pensarconLOGICA');
+            $this->pdo = new PDO ('mysql:host=localhost;dbname=dblicenses', 'usuario_proyecto', 'pensarconLOGICA');
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->pdo->query("SET NAMES 'utf8'");
             $this->orm = new NotORM($this->pdo);
         }
         catch(Exception $e){
@@ -105,7 +106,7 @@ class Modelo
                 /*"fecha" => CURRENT_TIMESTAMP,
                 "ref_tipo_licencia"=> 2,*/
                 );
-            $resultado=$stm->insert($datos);
+            $stm->insert($datos);
         } catch (Exception $e)
         {
             die($e->getMessage());
