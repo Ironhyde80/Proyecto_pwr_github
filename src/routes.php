@@ -60,12 +60,18 @@ $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, 
 
         $nombre=$_FILES['fichero']['name'];
         $temporal= $_FILES['fichero']['tmp_name'];
-        $subidos= 'C:\wamp64\www\Proyecto_pwr_github\icheros_subidos\\';
+        $subidos= 'C:\wamp64\www\Proyecto_pwr_github\icheros_subidos\\'.$nombre;
+        /*print_r($temporal);
+        echo "<br/>";
+        print_r($nombre);
+        echo "<br/>";
+        echo 'C:\wamp64\www\Proyecto_pwr_github\icheros_subidos\\'.$nombre;
+        die();*/
 
-        move_uploaded_file ( (string)$temporal , "C:\wamp64\www\Proyecto_pwr_github\icheros_subidos\"'.$nombre.'" );
+        move_uploaded_file ($temporal , $subidos );
 
         if($_FILES['fichero']['type']=='text/xml'){
-            $documento= simplexml_load_file($subidos, $nombre);
+            $documento= simplexml_load_file($subidos);
 
              foreach ($documento->Product_Key->Key as $k) {
                   $lcn->__SET('nombre',$documento->Product_Key['Name']);
