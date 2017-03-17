@@ -9,10 +9,12 @@ $model = new Modelo();
 $app->get('/', function ($request, $response, $args) use($model,$lcn,$aln) {
     // Sample log message
     $this->logger->info("Slim-Skeleton '/' route");
-    $data= array('alumnos' => $model->ObtenerAlumnos(),
-        'alumno' => $aln);
+    $objetos = array($model->datosAlumno(),
+                'alumnos' => $aln);
+    $alumnos = $objetos[1];
+    $licencias = $objetos[0];
     // Render index view
-    return $this->view->render($response,'index.php',$data);
+    return $this->view->render($response,'index.php',$objetos);
 })->setName('Inicio');
 
 $app->get('/acercade', function ($request, $response, $args) use ($app){
@@ -83,7 +85,7 @@ $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, 
                   }
                }  
         }else{
-            /*$lineas = file("'.$subidos.'\'.$nombre.'");
+            $lineas = file($subidos);
 
             $i=0;
  
@@ -121,7 +123,7 @@ $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, 
                
                $i++;
                //cerramos bucle
-            }*/
+            }
         }
         $data = array('exito' => "Correcto");
         return $this->view->render($response,'upload.twig.php',$data);
