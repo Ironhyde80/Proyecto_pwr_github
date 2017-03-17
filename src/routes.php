@@ -59,14 +59,14 @@ $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, 
     if($_FILES['fichero']['error']==0){
 
         $nombre=$_FILES['fichero']['name'];
-        $tamanio = $_FILES['fichero']['size'];
         $temporal= $_FILES['fichero']['tmp_name'];
-        $subidos= "C:\wamp64\www\Proyecto_pwr_github\icheros_subidos";
-        
-        //copy($temporal,$subidos);
+        $subidos= 'C:\wamp64\www\Proyecto_pwr_github\icheros_subidos\\';
+
+        move_uploaded_file ( (string)$temporal , "C:\wamp64\www\Proyecto_pwr_github\icheros_subidos\"'.$nombre.'" );
 
         if($_FILES['fichero']['type']=='text/xml'){
-            $documento= simplexml_load_file('C:\wamp64\www\Proyecto_pwr_github\keysW7.xml');
+            $documento= simplexml_load_file($subidos, $nombre);
+
              foreach ($documento->Product_Key->Key as $k) {
                   $lcn->__SET('nombre',$documento->Product_Key['Name']);
                   //$lcn-> __SET('nombre',(string)$k['Name']); 
@@ -77,21 +77,17 @@ $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, 
                   }
                }  
         }else{
-            $lineas = file("C:\wamp64\www\Proyecto_pwr_github\profesores.csv");
+            /*$lineas = file("'.$subidos.'\'.$nombre.'");
 
             $i=0;
  
-            //Recorremos el bucle para leer línea por línea
+            
             foreach ($lineas as $linea_num => $linea)
             { 
-               //abrimos bucle
-               /*si es diferente a 0 significa que no se encuentra en la primera línea 
-               (con los títulos de las columnas) y por lo tanto puede leerla*/
+               
                if($i != 0) 
                { 
-                   //abrimos condición, solo entrará en la condición a partir de la segunda pasada del bucle.
-                   /* La funcion explode nos ayuda a delimitar los campos, por lo tanto irá 
-                   leyendo hasta que encuentre un ; */
+                   
                    $datos = explode(";",$linea);
              
                    //Almacenamos los datos que vamos leyendo en una variable;
@@ -113,14 +109,13 @@ $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, 
                         $model->AñadirProfesores($prof);
                   }
                   
-                  /*print_r ($prof);*/
+                 
                }
              
-               /*Cuando pase la primera pasada se incrementará nuestro valor y a la siguiente pasada ya 
-               entraremos en la condición, de esta manera conseguimos que no lea la primera línea.*/
+               
                $i++;
                //cerramos bucle
-            }
+            }*/
         }
         return $this->view->render($response,'upload.twig.php');
     }
