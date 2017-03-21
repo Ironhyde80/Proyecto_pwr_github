@@ -18,10 +18,10 @@ $app->get('/', function ($request, $response, $args) use($model,$lcn,$aln) {
 $app->get('/acercade', function ($request, $response, $args) use ($app){
     $fecha = date('l dS \o\f F Y h:i:s A');
     $data = array('nombre' => 'Ayoze Pacheco y Gustavo Lopez Garcia',
-                  'descripcion' => 'Aplicacion orientada a la adminitración de licencias para alumnos por parte de los profesores', 
+                  'descripcion' => 'Aplicacion orientada a la adminitración de licencias para alumnos por parte de los profesores',
                   'fecha' =>$fecha);
     $body = $this->view->fetch('acercade.twig.php', $data);
-    return $response->write($body); 
+    return $response->write($body);
 })->setName('Acerca_de');
 
 $app->get('/login', function ($request, $response, $args) {
@@ -49,77 +49,69 @@ $app->get('/upload', function ($request, $response, $args) {
 })->setName('Upload');
 
 $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, $prof, $lcn){
-    
-
-
-
-
-
-
     if($_FILES['fichero']['error']==0){
 
-        $nombre=$_FILES['fichero']['name'];
+        $nombre=trim($_FILES['fichero']['name']);
         $temporal= $_FILES['fichero']['tmp_name'];
-        $subidos= 'C:\wamp64\www\Proyecto_pwr_github\icheros_subidos\\';
+        $subidos= 'C:\wamp64\www\Proyecto_pwr_github\\';
 
-        move_uploaded_file ( (string)$temporal , "C:\wamp64\www\Proyecto_pwr_github\icheros_subidos\"'.$nombre.'" );
+        move_uploaded_file ( (string)$temporal , $subidos.$nombre );
 
         if($_FILES['fichero']['type']=='text/xml'){
             $documento= simplexml_load_file($subidos, $nombre);
 
              foreach ($documento->Product_Key->Key as $k) {
                   $lcn->__SET('nombre',$documento->Product_Key['Name']);
-                  //$lcn-> __SET('nombre',(string)$k['Name']); 
+                  //$lcn-> __SET('nombre',(string)$k['Name']);
                   $lcn->__SET('clave',(string)$k);
                   $lcn->__SET('ref_tipo_licencia',2);
                   if($model->ComprobarLicencias($lcn)==false){
                         $model->AñadirLicencias($lcn);
                   }
-               }  
+               }
         }else{
-            /*$lineas = file("'.$subidos.'\'.$nombre.'");
+            $lineas = file($subidos.$nombre);
 
             $i=0;
- 
-            
+
+
             foreach ($lineas as $linea_num => $linea)
-            { 
-               
-               if($i != 0) 
-               { 
-                   
+            {
+
+               if($i != 0)
+               {
+
                    $datos = explode(";",$linea);
-             
+
                    //Almacenamos los datos que vamos leyendo en una variable;
                 if($datos[0]=='Informática'){
-                    $prof-> __SET('ref_departamento',1); 
-                } 
-                  $prof-> __SET('dni',trim($datos[1])); 
-                  $prof-> __SET('nombre',trim($datos[2])); 
-                  $prof-> __SET('primer_apellido',trim($datos[3])); 
-                  $prof-> __SET('segundo_apellido',trim($datos[4])); 
-                  $prof-> __SET('telefono',trim($datos[5])); 
-                  $prof-> __SET('email',trim($datos[7])); 
+                    $prof-> __SET('ref_departamento',1);
+                }
+                  $prof-> __SET('dni',trim($datos[1]));
+                  $prof-> __SET('nombre',trim($datos[2]));
+                  $prof-> __SET('primer_apellido',trim($datos[3]));
+                  $prof-> __SET('segundo_apellido',trim($datos[4]));
+                  $prof-> __SET('telefono',trim($datos[5]));
+                  $prof-> __SET('email',trim($datos[7]));
                   if(trim($datos[9]) != ''){
-                    $prof-> __SET('tutor',1); 
+                    $prof-> __SET('tutor',1);
                   }else{
-                    $prof-> __SET('tutor',0); 
+                    $prof-> __SET('tutor',0);
                   }
                   if($model->ComprobarProfesores($prof)==false){
                         $model->AñadirProfesores($prof);
                   }
-                  
-                 
+
+
                }
-             
-               
+
+
                $i++;
                //cerramos bucle
-            }*/
+            }
         }
         $data = array('exito' => "Correcto");
         return $this->view->render($response,'upload.twig.php',$data);
     }
-    
-});
 
+});
