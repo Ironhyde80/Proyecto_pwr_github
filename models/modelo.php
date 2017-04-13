@@ -75,7 +75,7 @@ class Modelo
             return true;
         }else{
             return false;
-            
+
         }
     }
 
@@ -91,7 +91,23 @@ class Modelo
             return true;
         }else{
             return false;
-            
+
+        }
+    }
+
+    public function ComprobarAlumnos(Alumnos $data){
+        $dni = $data->__GET('dni');
+        $stm = $this->orm->alumnos()->where("dni = ?",$dni);
+        $subido_profesor = "";
+
+        foreach($stm as $r) {
+                $subido_alumno = $r['dni'];
+            }
+        if ($subido_alumno != "") {
+            return true;
+        }else{
+            return false;
+
         }
     }
 

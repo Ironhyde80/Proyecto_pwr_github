@@ -35,37 +35,52 @@ class __TwigTemplate_cc3a279ae488db115efd0adb0be93522e53f23fc74def4ad7aeb78e2bfc
     public function block_body($context, array $blocks = array())
     {
         // line 4
-        echo "\t";
+        echo "\t<table>
+\t\t<tr>
+\t\t\t<th></th>
+\t\t\t<th>ID</th>
+\t\t\t<th>NOMBRE</th>
+\t\t\t<th>APELLIDOS</th>
+\t\t\t<th></th>
+\t\t</tr>
+\t";
+        // line 12
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable((isset($context["alumnos"]) ? $context["alumnos"] : null));
         foreach ($context['_seq'] as $context["_key"] => $context["alumno"]) {
-            // line 5
-            echo "\t<img src=";
-            echo twig_escape_filter($this->env, $this->getAttribute($context["alumno"], "__GET", array(0 => "url_foto"), "method"), "html", null, true);
-            echo "></img>
-\t\t<p>Alumno: ";
-            // line 6
+            // line 13
+            echo "\t\t<tr>
+\t\t\t<td><input type=\"checkbox\" name=\"usuario";
+            // line 14
+            echo twig_escape_filter($this->env, $this->getAttribute($context["alumno"], "__GET", array(0 => "id_alumno"), "method"), "html", null, true);
+            echo "\"</td>
+\t\t\t<td>";
+            // line 15
+            echo twig_escape_filter($this->env, $this->getAttribute($context["alumno"], "__GET", array(0 => "id_alumno"), "method"), "html", null, true);
+            echo "</td>
+\t\t\t<td>";
+            // line 16
             echo twig_escape_filter($this->env, $this->getAttribute($context["alumno"], "__GET", array(0 => "nombre"), "method"), "html", null, true);
-            echo " ";
+            echo "</td>
+\t\t\t<td>";
+            // line 17
             echo twig_escape_filter($this->env, $this->getAttribute($context["alumno"], "__GET", array(0 => "primer_apellido"), "method"), "html", null, true);
             echo " ";
             echo twig_escape_filter($this->env, $this->getAttribute($context["alumno"], "__GET", array(0 => "segundo_apellido"), "method"), "html", null, true);
-            echo "</p>\t
-\t\t<p>Cial: ";
-            // line 7
-            echo twig_escape_filter($this->env, $this->getAttribute($context["alumno"], "__GET", array(0 => "cial"), "method"), "html", null, true);
-            echo "</p>
-\t\t<p>Email: ";
-            // line 8
-            echo twig_escape_filter($this->env, $this->getAttribute($context["alumno"], "__GET", array(0 => "email"), "method"), "html", null, true);
-            echo "</p>
+            echo "</td>
+\t\t\t<td>
+\t\t\t\t<input type=\"submit\" value=\"Más informacion\">
+\t\t\t\t<input type=\"submit\" value=\"Agregar licencia\">
+\t\t\t\t<input type=\"submit\" value=\"Eliminar licencia\">
+\t\t\t</td>
+\t\t</tr>
 \t";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['alumno'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 10
-        echo "\t
+        // line 25
+        echo "\t</table>
 ";
     }
 
@@ -81,7 +96,7 @@ class __TwigTemplate_cc3a279ae488db115efd0adb0be93522e53f23fc74def4ad7aeb78e2bfc
 
     public function getDebugInfo()
     {
-        return array (  68 => 10,  60 => 8,  56 => 7,  48 => 6,  43 => 5,  38 => 4,  35 => 3,  29 => 2,  11 => 1,);
+        return array (  83 => 25,  67 => 17,  63 => 16,  59 => 15,  55 => 14,  52 => 13,  48 => 12,  38 => 4,  35 => 3,  29 => 2,  11 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -97,13 +112,29 @@ class __TwigTemplate_cc3a279ae488db115efd0adb0be93522e53f23fc74def4ad7aeb78e2bfc
         return new Twig_Source("{% extends 'layout/plantillaBase.twig.php' %}
 {% block title %}Inicio{% endblock %}
 {% block body %}
+\t<table>
+\t\t<tr>
+\t\t\t<th></th>
+\t\t\t<th>ID</th>
+\t\t\t<th>NOMBRE</th>
+\t\t\t<th>APELLIDOS</th>
+\t\t\t<th></th>
+\t\t</tr>
 \t{% for alumno in alumnos %}
-\t<img src={{alumno.__GET('url_foto')}}></img>
-\t\t<p>Alumno: {{ alumno.__GET('nombre') }} {{ alumno.__GET('primer_apellido') }} {{ alumno.__GET('segundo_apellido') }}</p>\t
-\t\t<p>Cial: {{ alumno.__GET('cial') }}</p>
-\t\t<p>Email: {{ alumno.__GET('email') }}</p>
+\t\t<tr>
+\t\t\t<td><input type=\"checkbox\" name=\"usuario{{ alumno.__GET('id_alumno') }}\"</td>
+\t\t\t<td>{{ alumno.__GET('id_alumno') }}</td>
+\t\t\t<td>{{ alumno.__GET('nombre') }}</td>
+\t\t\t<td>{{ alumno.__GET('primer_apellido') }} {{ alumno.__GET('segundo_apellido') }}</td>
+\t\t\t<td>
+\t\t\t\t<input type=\"submit\" value=\"Más informacion\">
+\t\t\t\t<input type=\"submit\" value=\"Agregar licencia\">
+\t\t\t\t<input type=\"submit\" value=\"Eliminar licencia\">
+\t\t\t</td>
+\t\t</tr>
 \t{% endfor %}
-\t
-{% endblock %}", "index.php", "C:\\wamp64\\www\\Proyecto_pwr_github\\templates\\index.php");
+\t</table>
+{% endblock %}
+", "index.php", "C:\\wamp64\\www\\Proyecto_pwr_github\\templates\\index.php");
     }
 }

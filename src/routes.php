@@ -17,7 +17,7 @@ $app->get('/', function ($request, $response, $args) use($model,$lcn,$aln) {
 
 $app->get('/acercade', function ($request, $response, $args) use ($app){
     $fecha = date('l dS \o\f F Y h:i:s A');
-    $data = array('nombre' => 'Ayoze Pacheco y Gustavo Lopez Garcia',
+    $data = array('nombre' => 'Ayoze Pacheco Herrera y Gustavo Lopez Garcia',
                   'descripcion' => 'Aplicacion orientada a la adminitración de licencias para alumnos por parte de los profesores',
                   'fecha' =>$fecha);
     $body = $this->view->fetch('acercade.twig.php', $data);
@@ -71,47 +71,65 @@ $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, 
                }
         }else{
             $lineas = file($subidos.$nombre);
-
+            // print_r($lineas);
+            // die();
             $i=0;
-
-
             foreach ($lineas as $linea_num => $linea)
             {
-
-               if($i != 0)
-               {
-
-                   $datos = explode(";",$linea);
-
-                   //Almacenamos los datos que vamos leyendo en una variable;
-                if($datos[0]=='Informática'){
-                    $prof-> __SET('ref_departamento',1);
+              $datos = explode(";",$linea);
+                if($datos[0]=="Departamento"){ //Fichero de profesores
+                  if($i != 0)
+                   {
+                    if($datos[0]=='Informática'){
+                        $prof-> __SET('ref_departamento',1);
+                    }
+                      $prof-> __SET('dni',trim($datos[1]));
+                      $prof-> __SET('nombre',trim($datos[2]));
+                      $prof-> __SET('primer_apellido',trim($datos[3]));
+                      $prof-> __SET('segundo_apellido',trim($datos[4]));
+                      $prof-> __SET('telefono',trim($datos[5]));
+                      $prof-> __SET('email',trim($datos[7]));
+                      if(trim($datos[9]) != ''){
+                        $prof-> __SET('tutor',1);
+                      }else{
+                        $prof-> __SET('tutor',0);
+                      }
+                      if($model->ComprobarProfesores($prof)==false){
+                            $model->AñadirProfesores($prof);
+                      }
+                   }
+                }else if(($datos[0]=="Grupo Clase")){ //Fichero de alumnos
+                  if($i != 0)
+                   {
+                      $aln-> __SET('dni',trim($datos[8]));
+                      $aln-> __SET('nombre',trim($datos[3]));
+                      $aln-> __SET('primer_apellido',trim($datos[4]));
+                      $aln-> __SET('segundo_apellido',trim($datos[5]));
+                      $aln-> __SET('cial',trim($datos[7]));
+                      $aln-> __SET('expediente',trim($datos[6]));
+                      $aln-> __SET('telefono',trim($datos[8]));
+                      $aln-> __SET('email',trim($datos[9]));
+                      $aln-> __SET('url_foto','C:\wamp64\www\Proyecto_pwr_github\media\fotos\\'.trim($datos[7]).'.jpg');
+                      if($model->ComprobarAlumnos($aln)==false){
+                            $model->AñadirAlumnos($aln);
+                      }
+                   }
+                }else{
+                  print_r('ERROR: No se ha introducido un archivo válido');
                 }
-                  $prof-> __SET('dni',trim($datos[1]));
-                  $prof-> __SET('nombre',trim($datos[2]));
-                  $prof-> __SET('primer_apellido',trim($datos[3]));
-                  $prof-> __SET('segundo_apellido',trim($datos[4]));
-                  $prof-> __SET('telefono',trim($datos[5]));
-                  $prof-> __SET('email',trim($datos[7]));
-                  if(trim($datos[9]) != ''){
-                    $prof-> __SET('tutor',1);
-                  }else{
-                    $prof-> __SET('tutor',0);
-                  }
-                  if($model->ComprobarProfesores($prof)==false){
-                        $model->AñadirProfesores($prof);
-                  }
-
-
-               }
-
-
-               $i++;
-               //cerramos bucle
+              $i++;
+            //cerramos bucle
             }
         }
         $data = array('exito' => "Correcto");
         return $this->view->render($response,'upload.twig.php',$data);
     }
-
 });
+
+$app->get('/lista', function ($request, $response, $args) {
+  $this->logger->info("Slim-Skeleton '/lista' route");
+  $data= array('alumnos' => $model->ObtenerAlumnos(),
+      'alumno' => $aln);
+  // Render index view
+  return $this->view->render($response,'index.php',$data);
+})->setName('Lista');
