@@ -98,7 +98,7 @@ class Modelo
     public function ComprobarAlumnos(Alumnos $data){
         $dni = $data->__GET('dni');
         $stm = $this->orm->alumnos()->where("dni = ?",$dni);
-        $subido_profesor = "";
+        $subido_alumno = "";
 
         foreach($stm as $r) {
                 $subido_alumno = $r['dni'];
@@ -164,7 +164,6 @@ class Modelo
                 "expediente"=> $data->__GET('expediente'),
                 "dni"=> $data->__GET('dni'),
                 "telefono"=> $data->__GET('telefono'),
-                "movil"=> $data->__GET('movil'),
                 "email"=> $data->__GET('email'),
                 "clave"=> $data->__GET('clave'),
                 "url_foto"=> $data->__GET('url_foto'),

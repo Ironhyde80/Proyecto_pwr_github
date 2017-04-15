@@ -35,7 +35,7 @@ class __TwigTemplate_cc3a279ae488db115efd0adb0be93522e53f23fc74def4ad7aeb78e2bfc
     public function block_body($context, array $blocks = array())
     {
         // line 4
-        echo "\t<table>
+        echo "\t<table class=\"table table-hover\">
 \t\t<tr>
 \t\t\t<th></th>
 \t\t\t<th>ID</th>
@@ -69,9 +69,9 @@ class __TwigTemplate_cc3a279ae488db115efd0adb0be93522e53f23fc74def4ad7aeb78e2bfc
             echo twig_escape_filter($this->env, $this->getAttribute($context["alumno"], "__GET", array(0 => "segundo_apellido"), "method"), "html", null, true);
             echo "</td>
 \t\t\t<td>
-\t\t\t\t<input type=\"submit\" value=\"Más informacion\">
-\t\t\t\t<input type=\"submit\" value=\"Agregar licencia\">
-\t\t\t\t<input type=\"submit\" value=\"Eliminar licencia\">
+\t\t\t\t<input type=\"submit\" value=\"Más informacion\" class=\"btn btn-info\">
+\t\t\t\t<input type=\"submit\" value=\"Agregar licencia\" class=\"btn btn-success\">
+\t\t\t\t<input type=\"submit\" value=\"Eliminar licencia\" class=\"btn btn-danger\">
 \t\t\t</td>
 \t\t</tr>
 \t";
@@ -112,7 +112,7 @@ class __TwigTemplate_cc3a279ae488db115efd0adb0be93522e53f23fc74def4ad7aeb78e2bfc
         return new Twig_Source("{% extends 'layout/plantillaBase.twig.php' %}
 {% block title %}Inicio{% endblock %}
 {% block body %}
-\t<table>
+\t<table class=\"table table-hover\">
 \t\t<tr>
 \t\t\t<th></th>
 \t\t\t<th>ID</th>
@@ -127,9 +127,9 @@ class __TwigTemplate_cc3a279ae488db115efd0adb0be93522e53f23fc74def4ad7aeb78e2bfc
 \t\t\t<td>{{ alumno.__GET('nombre') }}</td>
 \t\t\t<td>{{ alumno.__GET('primer_apellido') }} {{ alumno.__GET('segundo_apellido') }}</td>
 \t\t\t<td>
-\t\t\t\t<input type=\"submit\" value=\"Más informacion\">
-\t\t\t\t<input type=\"submit\" value=\"Agregar licencia\">
-\t\t\t\t<input type=\"submit\" value=\"Eliminar licencia\">
+\t\t\t\t<input type=\"submit\" value=\"Más informacion\" class=\"btn btn-info\">
+\t\t\t\t<input type=\"submit\" value=\"Agregar licencia\" class=\"btn btn-success\">
+\t\t\t\t<input type=\"submit\" value=\"Eliminar licencia\" class=\"btn btn-danger\">
 \t\t\t</td>
 \t\t</tr>
 \t{% endfor %}

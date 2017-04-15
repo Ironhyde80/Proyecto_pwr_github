@@ -74,48 +74,53 @@ $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, 
             // print_r($lineas);
             // die();
             $i=0;
+            $identificador=0;
             foreach ($lineas as $linea_num => $linea)
             {
               $datos = explode(";",$linea);
-                if($datos[0]=="Departamento"){ //Fichero de profesores
-                  if($i != 0)
-                   {
+                if($i==0){
+                  if($datos[0]=="Departamento"){ //Fichero de profesores
+                    $identificador=0;
+                  }else if($datos[0]=="Grupo Clase"){ //Fichero de alumnos
+                    $identificador=1;
+                  }else{
+                    print_r('ERROR: No se ha introducido un archivo válido');
+                    die();
+                  }
+                }else{
+                  if($identificador==0){
                     if($datos[0]=='Informática'){
                         $prof-> __SET('ref_departamento',1);
                     }
-                      $prof-> __SET('dni',trim($datos[1]));
-                      $prof-> __SET('nombre',trim($datos[2]));
-                      $prof-> __SET('primer_apellido',trim($datos[3]));
-                      $prof-> __SET('segundo_apellido',trim($datos[4]));
-                      $prof-> __SET('telefono',trim($datos[5]));
-                      $prof-> __SET('email',trim($datos[7]));
-                      if(trim($datos[9]) != ''){
-                        $prof-> __SET('tutor',1);
-                      }else{
-                        $prof-> __SET('tutor',0);
-                      }
-                      if($model->ComprobarProfesores($prof)==false){
-                            $model->AñadirProfesores($prof);
-                      }
-                   }
-                }else if(($datos[0]=="Grupo Clase")){ //Fichero de alumnos
-                  if($i != 0)
-                   {
-                      $aln-> __SET('dni',trim($datos[8]));
-                      $aln-> __SET('nombre',trim($datos[3]));
-                      $aln-> __SET('primer_apellido',trim($datos[4]));
-                      $aln-> __SET('segundo_apellido',trim($datos[5]));
-                      $aln-> __SET('cial',trim($datos[7]));
-                      $aln-> __SET('expediente',trim($datos[6]));
-                      $aln-> __SET('telefono',trim($datos[8]));
-                      $aln-> __SET('email',trim($datos[9]));
-                      $aln-> __SET('url_foto','C:\wamp64\www\Proyecto_pwr_github\media\fotos\\'.trim($datos[7]).'.jpg');
-                      if($model->ComprobarAlumnos($aln)==false){
-                            $model->AñadirAlumnos($aln);
-                      }
-                   }
-                }else{
-                  print_r('ERROR: No se ha introducido un archivo válido');
+                    $prof-> __SET('dni',trim($datos[1]));
+                    $prof-> __SET('nombre',trim($datos[2]));
+                    $prof-> __SET('primer_apellido',trim($datos[3]));
+                    $prof-> __SET('segundo_apellido',trim($datos[4]));
+                    $prof-> __SET('telefono',trim($datos[5]));
+                    $prof-> __SET('email',trim($datos[7]));
+                    if(trim($datos[9]) != ''){
+                      $prof-> __SET('tutor',1);
+                    }else{
+                      $prof-> __SET('tutor',0);
+                    }
+                    if($model->ComprobarProfesores($prof)==false){
+                          $model->AñadirProfesores($prof);
+                    }
+                  }else{
+                    $aln-> __SET('dni',trim($datos[8]));
+                    $aln-> __SET('nombre',trim($datos[3]));
+                    $aln-> __SET('primer_apellido',trim($datos[4]));
+                    $aln-> __SET('segundo_apellido',trim($datos[5]));
+                    $aln-> __SET('cial',trim($datos[6]));
+                    $aln-> __SET('expediente',trim($datos[7]));
+                    $aln-> __SET('telefono',trim($datos[9]));
+                    $aln-> __SET('email',trim($datos[11]));
+                    $aln-> __SET('url_foto','C:\wamp64\www\Proyecto_pwr_github\media\fotos\\'.trim($datos[7]).'.jpg');
+                    $aln-> __SET('clave',trim($datos[8])); //La clave sera el dni por defecto
+                    if($model->ComprobarAlumnos($aln)==false){
+                          $model->AñadirAlumnos($aln);
+                    }
+                  }
                 }
               $i++;
             //cerramos bucle
@@ -125,11 +130,3 @@ $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, 
         return $this->view->render($response,'upload.twig.php',$data);
     }
 });
-
-$app->get('/lista', function ($request, $response, $args) {
-  $this->logger->info("Slim-Skeleton '/lista' route");
-  $data= array('alumnos' => $model->ObtenerAlumnos(),
-      'alumno' => $aln);
-  // Render index view
-  return $this->view->render($response,'index.php',$data);
-})->setName('Lista');
