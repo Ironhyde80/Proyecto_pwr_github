@@ -2,17 +2,18 @@
 {% block title %}Inicio{% endblock %}
 {% block body %}
 	<table class="table table-hover">
+	<thead>
 		<tr>
 			<th></th>
-			<th>ID</th>
 			<th>NOMBRE</th>
 			<th>APELLIDOS</th>
 			<th></th>
 		</tr>
+	</thead>
+	<tbody>
 	{% for alumno in alumnos %}
 		<tr>
-			<td><input type="checkbox" name="usuario{{ alumno.__GET('id_alumno') }}"</td>
-			<td>{{ alumno.__GET('id_alumno') }}</td>
+			<td><input type="checkbox" id="{{ alumno.__GET('id_alumno') }}" name="usuario{{ alumno.__GET('id_alumno') }}"</td>
 			<td>{{ alumno.__GET('nombre') }}</td>
 			<td>{{ alumno.__GET('primer_apellido') }} {{ alumno.__GET('segundo_apellido') }}</td>
 			<td>
@@ -22,5 +23,6 @@
 			</td>
 		</tr>
 	{% endfor %}
+	</tbody>
 	</table>
 {% endblock %}

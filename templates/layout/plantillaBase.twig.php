@@ -30,5 +30,6 @@
 	<div align="center">
 		&copy;2017 Todos los derechos reservados
 	</div>
+	<script type="text/javascript" src="{{base_url()}}/../js/otorgarLicencias.js"></script>
 </body>
 </html>
