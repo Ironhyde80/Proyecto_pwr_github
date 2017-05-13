@@ -60,7 +60,31 @@ class Modelo
             die($e->getMessage());
         }
     }*/
+    public function datosAlumno(){
+        $licencias = $this->orm->alumnos_cursos_licencias()->fetch();
+        $id_alumno = $licencias['ref_id_alumno'];
+        $id_licencia = $licencias['ref_id_licencia'];
+        $datos_alumno = $this->orm->alumnos()->where("id_alumno = ?",$id_alumno);
+        $datos_licencia = $this->orm->licencias()->where("id_licencia = ?",$id_licencia);
 
+        foreach($datos_alumno as $a) {
+                $alumno = new Alumnos();
+                $alumno->__SET('id_alumno',$a['id_alumno']);
+                $alumno->__SET('dni',$a['dni']);
+                $alumno->__SET('nombre',$a['nombre']);
+                $alumno->__SET('primer_apellido',$a['primer_apellido']);
+                $alumno->__SET('segundo_apellido',$a['segundo_apellido']);
+                $alumno->__SET('cial',$a['cial']);
+                $alumno->__SET('expediente',$a['expediente']);
+                $alumno->__SET('telefono',$a['telefono']);
+                $alumno->__SET('email',$a['email']);
+                $alumno->__SET('clave',$a['clave']);
+                $alumno->__SET('url_foto',$a['url_foto']);
+                $alumnos[]= $alumno;
+            }
+            return $alumnos;
+
+    }
     public function ComprobarLicencias(Licencias $data){
         $clave = $data->__GET('clave');
         $stm = $this->orm->licencias()->where("clave = ?",$clave);
@@ -202,8 +226,6 @@ class Modelo
             die($e->getMessage());
         }
     }
-
-
 
     function Obtener_licencias(){
         try

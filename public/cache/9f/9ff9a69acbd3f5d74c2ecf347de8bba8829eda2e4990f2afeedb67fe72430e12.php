@@ -79,8 +79,13 @@ class __TwigTemplate_cc3a279ae488db115efd0adb0be93522e53f23fc74def4ad7aeb78e2bfc
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['alumno'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
+<<<<<<< HEAD
+        // line 10
+        echo "\t
+=======
         // line 25
         echo "\t</table>
+>>>>>>> origin/master
 ";
     }
 
@@ -96,7 +101,11 @@ class __TwigTemplate_cc3a279ae488db115efd0adb0be93522e53f23fc74def4ad7aeb78e2bfc
 
     public function getDebugInfo()
     {
+<<<<<<< HEAD
+        return array (  68 => 10,  60 => 8,  56 => 7,  48 => 6,  43 => 5,  38 => 4,  35 => 3,  29 => 2,  11 => 1,);
+=======
         return array (  83 => 25,  67 => 17,  63 => 16,  59 => 15,  55 => 14,  52 => 13,  48 => 12,  38 => 4,  35 => 3,  29 => 2,  11 => 1,);
+>>>>>>> origin/master
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -133,8 +142,13 @@ class __TwigTemplate_cc3a279ae488db115efd0adb0be93522e53f23fc74def4ad7aeb78e2bfc
 \t\t\t</td>
 \t\t</tr>
 \t{% endfor %}
+<<<<<<< HEAD
+\t
+{% endblock %}", "index.php", "C:\\wamp64\\www\\Proyecto_pwr_github\\templates\\index.php");
+=======
 \t</table>
 {% endblock %}
 ", "index.php", "C:\\wamp64\\www\\Proyecto_pwr_github\\templates\\index.php");
+>>>>>>> origin/master
     }
 }

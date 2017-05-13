@@ -9,10 +9,12 @@ $model = new Modelo();
 $app->get('/', function ($request, $response, $args) use($model,$lcn,$aln) {
     // Sample log message
     $this->logger->info("Slim-Skeleton '/' route");
-    $data= array('alumnos' => $model->ObtenerAlumnos(),
-        'alumno' => $aln);
+    $objetos = array($model->datosAlumno(),
+                'alumnos' => $aln);
+    $alumnos = $objetos[1];
+    $licencias = $objetos[0];
     // Render index view
-    return $this->view->render($response,'index.php',$data);
+    return $this->view->render($response,'index.php',$objetos);
 })->setName('Inicio');
 
 $app->get('/acercade', function ($request, $response, $args) use ($app){
@@ -53,12 +55,24 @@ $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, 
 
         $nombre=trim($_FILES['fichero']['name']);
         $temporal= $_FILES['fichero']['tmp_name'];
+<<<<<<< HEAD
+        $subidos= 'C:\wamp64\www\Proyecto_pwr_github\icheros_subidos\\'.$nombre;
+        /*print_r($temporal);
+        echo "<br/>";
+        print_r($nombre);
+        echo "<br/>";
+        echo 'C:\wamp64\www\Proyecto_pwr_github\icheros_subidos\\'.$nombre;
+        die();*/
+
+        move_uploaded_file ($temporal , $subidos );
+=======
         $subidos= 'C:\wamp64\www\Proyecto_pwr_github\\';
 
         move_uploaded_file ( (string)$temporal , $subidos.$nombre );
+>>>>>>> origin/master
 
         if($_FILES['fichero']['type']=='text/xml'){
-            $documento= simplexml_load_file($subidos, $nombre);
+            $documento= simplexml_load_file($subidos);
 
              foreach ($documento->Product_Key->Key as $k) {
                   $lcn->__SET('nombre',$documento->Product_Key['Name']);
@@ -70,9 +84,14 @@ $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, 
                   }
                }
         }else{
+<<<<<<< HEAD
+            $lineas = file($subidos);
+
+=======
             $lineas = file($subidos.$nombre);
             // print_r($lineas);
             // die();
+>>>>>>> origin/master
             $i=0;
             $identificador=0;
             foreach ($lineas as $linea_num => $linea)
@@ -121,9 +140,19 @@ $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, 
                           $model->AñadirAlumnos($aln);
                     }
                   }
+<<<<<<< HEAD
+                  
+                 
+               }
+             
+               
+               $i++;
+               //cerramos bucle
+=======
                 }
               $i++;
             //cerramos bucle
+>>>>>>> origin/master
             }
         }
         $data = array('exito' => "Correcto");
