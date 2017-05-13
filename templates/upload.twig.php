@@ -13,7 +13,4 @@
 	</center>
 	<label>{{error}}</label>
 </form>
-<script>
-		alert('{{exito}}');
-	</script>
 {% endblock %}
