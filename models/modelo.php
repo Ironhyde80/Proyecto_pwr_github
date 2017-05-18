@@ -59,7 +59,7 @@ class Modelo
         }
     }*/
 
-    public function ComprobarLicencias(Licencias $data){
+    public function ComprobarLicencias(Licencias $data){ //Compruueba que la licencia no esta repetida
         $clave = $data->__GET('clave');
         $stm = $this->orm->licencias()->where("clave = ?",$clave);
         $subido_clave = "";
@@ -77,7 +77,7 @@ class Modelo
         }
     }
 
-    public function ComprobarProfesores(Profesores $data){
+    public function ComprobarProfesores(Profesores $data){// Comprueba que el profesor no este repetido
         $dni = $data->__GET('dni');
         $stm = $this->orm->profesores()->where("dni = ?",$dni);
         $subido_profesor = "";
@@ -93,7 +93,7 @@ class Modelo
         }
     }
 
-    public function ComprobarAlumnos(Alumnos $data){
+    public function ComprobarAlumnos(Alumnos $data){ //Comprueba que el alumno no este repetido
         $dni = $data->__GET('dni');
         $stm = $this->orm->alumnos()->where("dni = ?",$dni);
         $subido_alumno = "";
@@ -173,7 +173,7 @@ class Modelo
         }
     }
 
-    function ObtenerAlumnos(){
+    function ObtenerAlumnos(){ //Lista de alumnos
         try
         {
             foreach($this->orm->Alumnos() as $r) {
@@ -282,5 +282,25 @@ class Modelo
     public function getUsuarioByLogin($login){
         return $this->library->alumnos()->where('login',$login)->fetch();
     }*/
+    function aplicarLicencia(Array $alumnos){
+      try
+      {
+          foreach($this->orm->licencias() as $r) {
+              $licencia = new Licencias();
+              $licencia->__SET('id_licencia',$r['id_licencia']);
+              $licencia->__SET('nombre',$r['nombre']);
+              $licencia->__SET('clave',$r['clave']);
+              $licencia->__SET('fecha',$r['fecha_insercion']);
+              $licencia->__SET('ref_tipo_licencia',$r['ref_tipo_licencia']);
 
+              $licencias[]= $licencia;
+          }
+          return $licencias;
+
+      }
+      catch(Exeption $e)
+      {
+          die($e->getMessage());
+      }
+  }
 }

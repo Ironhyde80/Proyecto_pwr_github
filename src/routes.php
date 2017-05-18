@@ -10,10 +10,20 @@ $app->get('/', function ($request, $response, $args) use($model,$lcn,$aln) {
     // Sample log message
     $this->logger->info("Slim-Skeleton '/' route");
     $data= array('alumnos' => $model->ObtenerAlumnos(),
-        'alumno' => $aln);
+        'alumno' => $aln,
+        'licencias'=> $model->Obtener_licencias(),
+        'licencia'=>$lcn);
     // Render index view
     return $this->view->render($response,'index.php',$data);
 })->setName('Inicio');
+
+$app->post('/', function ($request, $response, $args) use($model,$lcn,$aln) {
+
+
+
+
+
+})->setName('inicio');
 
 $app->get('/acercade', function ($request, $response, $args) use ($app){
     $fecha = date('l dS \o\f F Y h:i:s A');
