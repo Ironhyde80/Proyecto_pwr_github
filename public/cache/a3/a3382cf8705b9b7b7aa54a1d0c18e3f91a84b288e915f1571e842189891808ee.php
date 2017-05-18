@@ -91,6 +91,10 @@ class __TwigTemplate_8afbab084251e1411bb165a4f590fd9b622ae97385592f1d9233cb36e2d
 \t<div align=\"center\">
 \t\t&copy;2017 Todos los derechos reservados
 \t</div>
+\t<script type=\"text/javascript\" src=\"";
+        // line 33
+        echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->baseUrl(), "html", null, true);
+        echo "/../js/otorgarLicencias.js?tiempo=<?=tiempo();?>\"></script>
 </body>
 </html>";
     }
@@ -118,7 +122,7 @@ class __TwigTemplate_8afbab084251e1411bb165a4f590fd9b622ae97385592f1d9233cb36e2d
 
     public function getDebugInfo()
     {
-        return array (  105 => 27,  99 => 5,  89 => 28,  87 => 27,  83 => 25,  77 => 22,  73 => 21,  69 => 20,  64 => 19,  59 => 17,  54 => 16,  52 => 15,  45 => 11,  41 => 10,  37 => 9,  32 => 7,  27 => 5,  21 => 1,);
+        return array (  109 => 27,  103 => 5,  96 => 33,  89 => 28,  87 => 27,  83 => 25,  77 => 22,  73 => 21,  69 => 20,  64 => 19,  59 => 17,  54 => 16,  52 => 15,  45 => 11,  41 => 10,  37 => 9,  32 => 7,  27 => 5,  21 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -163,6 +167,7 @@ class __TwigTemplate_8afbab084251e1411bb165a4f590fd9b622ae97385592f1d9233cb36e2d
 \t<div align=\"center\">
 \t\t&copy;2017 Todos los derechos reservados
 \t</div>
+\t<script type=\"text/javascript\" src=\"{{base_url()}}/../js/otorgarLicencias.js?tiempo=<?=tiempo();?>\"></script>
 </body>
 </html>", "layout/plantillaBase.twig.php", "C:\\wamp64\\www\\Proyecto_pwr_github\\templates\\layout\\plantillaBase.twig.php");
     }
