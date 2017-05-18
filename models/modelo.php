@@ -19,6 +19,7 @@ class Modelo
         }
         catch(Exception $e){
             die ($e->getMessage());
+            print_r('prueba');
         }
     }
 
