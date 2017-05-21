@@ -164,6 +164,7 @@ class Modelo
                 "telefono"=> $data->__GET('telefono'),
                 "email"=> $data->__GET('email'),
                 "tutor"=> $data->__GET('tutor'),
+                "clave"=> $data->__GET('clave'),
                 "ref_departamento"=> $data->__GET('ref_departamento'),
                 //EN el controlador asignar los valores siguioentes valores
                 /*"fecha" => CURRENT_TIMESTAMP,
@@ -200,6 +201,34 @@ class Modelo
     }
 
     function ObtenerAlumnos(){
+        try
+        {
+            foreach($this->orm->Alumnos() as $r) {
+                $alumno = new Alumnos();
+                $alumno->__SET('id_alumno',$r['id_alumno']);
+                $alumno->__SET('dni',$r['dni']);
+                $alumno->__SET('nombre',$r['nombre']);
+                $alumno->__SET('primer_apellido',$r['primer_apellido']);
+                $alumno->__SET('segundo_apellido',$r['segundo_apellido']);
+                $alumno->__SET('cial',$r['cial']);
+                $alumno->__SET('expediente',$r['expediente']);
+                $alumno->__SET('telefono',$r['telefono']);
+                $alumno->__SET('email',$r['email']);
+                $alumno->__SET('clave',$r['clave']);
+                $alumno->__SET('url_foto',$r['url_foto']);
+
+                $alumnos[]= $alumno;
+            }
+            return $alumnos;
+
+        }
+        catch(Exeption $e)
+        {
+            die($e->getMessage());
+        }
+    }
+
+    function ObtenerProfesores(){
         try
         {
             foreach($this->orm->Alumnos() as $r) {

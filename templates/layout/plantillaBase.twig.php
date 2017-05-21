@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>{% block title %}Gestor de licencias{% endblock %}</title>
 
-	<script type="text/javascript" src="{{base_url()}}/../assets/jquery-2.2.1/jquery-2.2.1.min.js"></script>			
+	<script type="text/javascript" src="{{base_url()}}/../assets/jquery-2.2.1/jquery-2.2.1.min.js"></script>
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="{{base_url()}}/../assets/bootstrap-3.3.6-dist/css/bootstrap.min.css">
 	<script type="text/javascript" src="{{base_url()}}/../assets/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div class="well" align="center"><h2>FICHA DE CLASE:</h2>
-	{% if usuario == false %}
+	{% if user == false %}
 		<a href="{{ path_for('Login') }}">Login</a>&nbsp;|&nbsp;
 		<a href="{{ path_for('Acerca_de') }}">Acerca de</a>&nbsp;|&nbsp;
 	{% else %}
@@ -20,7 +20,7 @@
 		<a href="{{ path_for('Upload') }}">Subir fichero</a>&nbsp;|&nbsp;
 		<a href="{{ path_for('Acerca_de') }}">Acerca de</a>&nbsp;|&nbsp;
 		<a href="{{ path_for('Logout') }}">Salir</a>
-	</div> 
+	</div>
 	{% endif %}
 	<hr>
 	<div align="center">

@@ -8,9 +8,9 @@ var arrayID = [];
 			console.log($(this).attr('id'));
         	arrayID.push($(this).attr('id'));
     	});
-    	/*ajaxGeneral('POST',helper,{'action':'anadirLicencia',idUsuario:arrayID},function(){
+    	ajaxGeneral('POST',helper,{'action':'anadirLicencia',idUsuario:arrayID},function(){
     		alert('Licencias actualizadas');
-    	});*/
+    	});
     	console.log(arrayID);
 	});
 

@@ -30,7 +30,7 @@ class __TwigTemplate_8afbab084251e1411bb165a4f590fd9b622ae97385592f1d9233cb36e2d
 \t<script type=\"text/javascript\" src=\"";
         // line 7
         echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->baseUrl(), "html", null, true);
-        echo "/../assets/jquery-2.2.1/jquery-2.2.1.min.js\"></script>\t\t\t
+        echo "/../assets/jquery-2.2.1/jquery-2.2.1.min.js\"></script>
 \t<!-- Bootstrap -->
 \t<link rel=\"stylesheet\" href=\"";
         // line 9
@@ -49,7 +49,7 @@ class __TwigTemplate_8afbab084251e1411bb165a4f590fd9b622ae97385592f1d9233cb36e2d
 \t<div class=\"well\" align=\"center\"><h2>FICHA DE CLASE:</h2>
 \t";
         // line 15
-        if (((isset($context["usuario"]) ? $context["usuario"] : null) == false)) {
+        if (((isset($context["user"]) ? $context["user"] : null) == false)) {
             // line 16
             echo "\t\t<a href=\"";
             echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->pathFor("Login"), "html", null, true);
@@ -76,7 +76,7 @@ class __TwigTemplate_8afbab084251e1411bb165a4f590fd9b622ae97385592f1d9233cb36e2d
             // line 22
             echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->pathFor("Logout"), "html", null, true);
             echo "\">Salir</a>
-\t</div> 
+\t</div>
 \t";
         }
         // line 25
@@ -96,7 +96,8 @@ class __TwigTemplate_8afbab084251e1411bb165a4f590fd9b622ae97385592f1d9233cb36e2d
         echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->baseUrl(), "html", null, true);
         echo "/../js/otorgarLicencias.js?tiempo=<?=tiempo();?>\"></script>
 </body>
-</html>";
+</html>
+";
     }
 
     // line 5
@@ -122,7 +123,7 @@ class __TwigTemplate_8afbab084251e1411bb165a4f590fd9b622ae97385592f1d9233cb36e2d
 
     public function getDebugInfo()
     {
-        return array (  109 => 27,  103 => 5,  96 => 33,  89 => 28,  87 => 27,  83 => 25,  77 => 22,  73 => 21,  69 => 20,  64 => 19,  59 => 17,  54 => 16,  52 => 15,  45 => 11,  41 => 10,  37 => 9,  32 => 7,  27 => 5,  21 => 1,);
+        return array (  110 => 27,  104 => 5,  96 => 33,  89 => 28,  87 => 27,  83 => 25,  77 => 22,  73 => 21,  69 => 20,  64 => 19,  59 => 17,  54 => 16,  52 => 15,  45 => 11,  41 => 10,  37 => 9,  32 => 7,  27 => 5,  21 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -141,7 +142,7 @@ class __TwigTemplate_8afbab084251e1411bb165a4f590fd9b622ae97385592f1d9233cb36e2d
 \t<meta charset=\"UTF-8\">
 \t<title>{% block title %}Gestor de licencias{% endblock %}</title>
 
-\t<script type=\"text/javascript\" src=\"{{base_url()}}/../assets/jquery-2.2.1/jquery-2.2.1.min.js\"></script>\t\t\t
+\t<script type=\"text/javascript\" src=\"{{base_url()}}/../assets/jquery-2.2.1/jquery-2.2.1.min.js\"></script>
 \t<!-- Bootstrap -->
 \t<link rel=\"stylesheet\" href=\"{{base_url()}}/../assets/bootstrap-3.3.6-dist/css/bootstrap.min.css\">
 \t<script type=\"text/javascript\" src=\"{{base_url()}}/../assets/bootstrap-3.3.6-dist/js/bootstrap.min.js\"></script>
@@ -149,7 +150,7 @@ class __TwigTemplate_8afbab084251e1411bb165a4f590fd9b622ae97385592f1d9233cb36e2d
 </head>
 <body>
 \t<div class=\"well\" align=\"center\"><h2>FICHA DE CLASE:</h2>
-\t{% if usuario == false %}
+\t{% if user == false %}
 \t\t<a href=\"{{ path_for('Login') }}\">Login</a>&nbsp;|&nbsp;
 \t\t<a href=\"{{ path_for('Acerca_de') }}\">Acerca de</a>&nbsp;|&nbsp;
 \t{% else %}
@@ -157,7 +158,7 @@ class __TwigTemplate_8afbab084251e1411bb165a4f590fd9b622ae97385592f1d9233cb36e2d
 \t\t<a href=\"{{ path_for('Upload') }}\">Subir fichero</a>&nbsp;|&nbsp;
 \t\t<a href=\"{{ path_for('Acerca_de') }}\">Acerca de</a>&nbsp;|&nbsp;
 \t\t<a href=\"{{ path_for('Logout') }}\">Salir</a>
-\t</div> 
+\t</div>
 \t{% endif %}
 \t<hr>
 \t<div align=\"center\">
@@ -169,6 +170,7 @@ class __TwigTemplate_8afbab084251e1411bb165a4f590fd9b622ae97385592f1d9233cb36e2d
 \t</div>
 \t<script type=\"text/javascript\" src=\"{{base_url()}}/../js/otorgarLicencias.js?tiempo=<?=tiempo();?>\"></script>
 </body>
-</html>", "layout/plantillaBase.twig.php", "C:\\wamp64\\www\\Proyecto_pwr_github\\templates\\layout\\plantillaBase.twig.php");
+</html>
+", "layout/plantillaBase.twig.php", "C:\\wamp64\\www\\Proyecto_pwr_github\\templates\\layout\\plantillaBase.twig.php");
     }
 }

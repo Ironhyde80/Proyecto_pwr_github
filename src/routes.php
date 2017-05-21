@@ -8,20 +8,67 @@ $model = new Modelo();
 
 $app->get('/', function ($request, $response, $args) use($model,$lcn,$aln) {
     // Sample log message
-    $this->logger->info("Slim-Skeleton '/' route");
-    $data= array('alumnos' => $model->ObtenerAlumnos(),
-        'alumno' => $aln);
-    // Render index view
-    return $this->view->render($response,'index.php',$data);
-})->setName('Inicio');
+    if(isset($_SESSION['user'])){
+      $this->logger->info("Slim-Skeleton '/' route");
+      $data= array('alumnos' => $model->ObtenerAlumnos(),
+          'alumno' => $aln);
+      // Render index view
+      return $this->view->render($response,'index.php',$data);
+    }else{
+      return $this->view->render($response,'login.twig.php');
+    }
+})->setName('Login');
 
 $app->post('/', function ($request, $response, $args) use($model,$lcn,$aln) {
+  $usuario = $request->getParam('usuario');  //Tiene que ser el DNI
+  $clave = $request->getParam('clave');
+  $alumnos= $model->ObtenerAlumnos();
+  $profesores= $model->ObtenerProfesores();
 
+  // Acordarse de eliminarlo -------------------------------------->
+  if($usuario=='admin' && $clave=='admin'){
+    $_SESSION['user']= $usuario;
+    $data= array('alumnos' => $model->ObtenerAlumnos(),
+        'alumno' => $aln);
+    return $this->view->fetch('index.php',$data);
+  }
+  // <---------------------------------------------Acordarse de eliminarlo
 
+  $respuesta=0;
+  foreach ($alumnos as $a) {
+    if($clave==$a->clave && $usuario==$a->dni ){
+      print_r('kk');
+      die();
+      $respuesta=1;
+      break;
+    }
+  }
+  if($respuesta==0){
+    foreach ($profesores as $p) {
+        if($clave==$a->clave && $usuario==$a->dni ){
+          print_r('kk2');
+          die();
+          $respuesta=1;
 
-
-    
-})->setName('inicio');
+          break;
+        }
+    }
+    if($respuesta==0){
+      $body = $this->view->fetch('login.twig.php');
+      return $response->write($body);
+    }else{
+      $_SESSION['user']= $usuario;
+      $data= array('alumnos' => $model->ObtenerAlumnos(),
+          'alumno' => $aln);
+      return $this->view->fetch('index.php',$data);
+    }
+  }else{
+    $_SESSION['user']= $usuario;
+    $data= array('alumnos' => $model->ObtenerAlumnos(),
+        'alumno' => $aln);
+    return $this->view->fetch('index.php',$data);
+  }
+})->setName('Inicio');
 
 $app->get('/acercade', function ($request, $response, $args) use ($app){
     $fecha = date('l dS \o\f F Y h:i:s A');
@@ -32,21 +79,12 @@ $app->get('/acercade', function ($request, $response, $args) use ($app){
     return $response->write($body);
 })->setName('Acerca_de');
 
-$app->get('/login', function ($request, $response, $args) {
-    // Sample log message
-    $this->logger->info("Aqui se haran los login");
-
+$app->get('/logout', function ($request, $response, $args) use($app){
+    unset($_SESSION['user']);
+    $this->get('view')->getEnvironment()->addGlobal('user', null);
+    return $response->withRedirect($app->getContainer()->get('router')->pathFor('Login'));
     // Render index view
-    return $this->view->render($response,'login.twig.php');
-})->setName('Login');
-
-$app->get('/logout', function ($request, $response, $args) {
-    // Sample log message
-    $this->logger->info("Aqui se haran los logout");
-
-    // Render index view
-    return $this->view->render($response,'logout.twig.php');
-})->setName('Logout');
+})->setName('Logout')->add($accesoLogin);
 
 $app->get('/upload', function ($request, $response, $args) {
     // Sample log message
@@ -54,7 +92,7 @@ $app->get('/upload', function ($request, $response, $args) {
 
     // Render index view
     return $this->view->render($response,'upload.twig.php');
-})->setName('Upload');
+})->setName('Upload')->add($accesoLogin);
 
 $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, $prof, $lcn){
     if($_FILES['fichero']['error']==0){
@@ -106,6 +144,7 @@ $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, 
                     $prof-> __SET('segundo_apellido',trim($datos[4]));
                     $prof-> __SET('telefono',trim($datos[5]));
                     $prof-> __SET('email',trim($datos[7]));
+                    $prof-> __SET('clave',trim($datos[1])); //La clave sera el dni por defecto
                     if(trim($datos[9]) != ''){
                       $prof-> __SET('tutor',1);
                     }else{
