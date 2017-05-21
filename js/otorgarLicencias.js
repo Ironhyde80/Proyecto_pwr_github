@@ -1,4 +1,3 @@
-
 var helper = "../helper/funcionesAjax.php";
 $( document ).ready(function() {
 
