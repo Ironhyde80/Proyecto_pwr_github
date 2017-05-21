@@ -1,6 +1,4 @@
 <?php
-
-
 class Modelo
 {
     private $licencias;
@@ -60,32 +58,8 @@ class Modelo
             die($e->getMessage());
         }
     }*/
-    public function datosAlumno(){
-        $licencias = $this->orm->alumnos_cursos_licencias()->fetch();
-        $id_alumno = $licencias['ref_id_alumno'];
-        $id_licencia = $licencias['ref_id_licencia'];
-        $datos_alumno = $this->orm->alumnos()->where("id_alumno = ?",$id_alumno);
-        $datos_licencia = $this->orm->licencias()->where("id_licencia = ?",$id_licencia);
 
-        foreach($datos_alumno as $a) {
-                $alumno = new Alumnos();
-                $alumno->__SET('id_alumno',$a['id_alumno']);
-                $alumno->__SET('dni',$a['dni']);
-                $alumno->__SET('nombre',$a['nombre']);
-                $alumno->__SET('primer_apellido',$a['primer_apellido']);
-                $alumno->__SET('segundo_apellido',$a['segundo_apellido']);
-                $alumno->__SET('cial',$a['cial']);
-                $alumno->__SET('expediente',$a['expediente']);
-                $alumno->__SET('telefono',$a['telefono']);
-                $alumno->__SET('email',$a['email']);
-                $alumno->__SET('clave',$a['clave']);
-                $alumno->__SET('url_foto',$a['url_foto']);
-                $alumnos[]= $alumno;
-            }
-            return $alumnos;
-
-    }
-    public function ComprobarLicencias(Licencias $data){
+    public function ComprobarLicencias(Licencias $data){ //Compruueba que la licencia no esta repetida
         $clave = $data->__GET('clave');
         $stm = $this->orm->licencias()->where("clave = ?",$clave);
         $subido_clave = "";
@@ -103,7 +77,7 @@ class Modelo
         }
     }
 
-    public function ComprobarProfesores(Profesores $data){
+    public function ComprobarProfesores(Profesores $data){// Comprueba que el profesor no este repetido
         $dni = $data->__GET('dni');
         $stm = $this->orm->profesores()->where("dni = ?",$dni);
         $subido_profesor = "";
@@ -119,7 +93,7 @@ class Modelo
         }
     }
 
-    public function ComprobarAlumnos(Alumnos $data){
+    public function ComprobarAlumnos(Alumnos $data){ //Comprueba que el alumno no este repetido
         $dni = $data->__GET('dni');
         $stm = $this->orm->alumnos()->where("dni = ?",$dni);
         $subido_alumno = "";
@@ -199,7 +173,7 @@ class Modelo
         }
     }
 
-    function ObtenerAlumnos(){
+    function ObtenerAlumnos(){ //Lista de alumnos
         try
         {
             foreach($this->orm->Alumnos() as $r) {
@@ -226,6 +200,8 @@ class Modelo
             die($e->getMessage());
         }
     }
+
+
 
     function Obtener_licencias(){
         try
@@ -306,5 +282,25 @@ class Modelo
     public function getUsuarioByLogin($login){
         return $this->library->alumnos()->where('login',$login)->fetch();
     }*/
+    function aplicarLicencia(Array $alumnos){
+      try
+      {
+          foreach($this->orm->licencias() as $r) {
+              $licencia = new Licencias();
+              $licencia->__SET('id_licencia',$r['id_licencia']);
+              $licencia->__SET('nombre',$r['nombre']);
+              $licencia->__SET('clave',$r['clave']);
+              $licencia->__SET('fecha',$r['fecha_insercion']);
+              $licencia->__SET('ref_tipo_licencia',$r['ref_tipo_licencia']);
 
+              $licencias[]= $licencia;
+          }
+          return $licencias;
+
+      }
+      catch(Exeption $e)
+      {
+          die($e->getMessage());
+      }
+  }
 }

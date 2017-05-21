@@ -36,6 +36,7 @@ class __TwigTemplate_cc3a279ae488db115efd0adb0be93522e53f23fc74def4ad7aeb78e2bfc
     {
         // line 4
         echo "\t<table class=\"table table-hover\">
+<<<<<<< HEAD
 \t\t<thead>
 \t\t\t<tr>
 \t\t\t\t<th></th>
@@ -66,6 +67,36 @@ class __TwigTemplate_cc3a279ae488db115efd0adb0be93522e53f23fc74def4ad7aeb78e2bfc
             echo "</td>
 \t\t\t<td>";
             // line 20
+=======
+\t<thead>
+\t\t<tr>
+\t\t\t<th></th>
+\t\t\t<th>NOMBRE</th>
+\t\t\t<th>APELLIDOS</th>
+\t\t\t<th></th>
+\t\t</tr>
+\t</thead>
+\t<tbody>
+\t";
+        // line 14
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["alumnos"]) ? $context["alumnos"] : null));
+        foreach ($context['_seq'] as $context["_key"] => $context["alumno"]) {
+            // line 15
+            echo "\t\t<tr>
+\t\t\t<td><input type=\"checkbox\" id=\"";
+            // line 16
+            echo twig_escape_filter($this->env, $this->getAttribute($context["alumno"], "__GET", array(0 => "id_alumno"), "method"), "html", null, true);
+            echo "\" name=\"usuario";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["alumno"], "__GET", array(0 => "id_alumno"), "method"), "html", null, true);
+            echo "\"</td>
+\t\t\t<td>";
+            // line 17
+            echo twig_escape_filter($this->env, $this->getAttribute($context["alumno"], "__GET", array(0 => "nombre"), "method"), "html", null, true);
+            echo "</td>
+\t\t\t<td>";
+            // line 18
+>>>>>>> refs/remotes/origin/master
             echo twig_escape_filter($this->env, $this->getAttribute($context["alumno"], "__GET", array(0 => "primer_apellido"), "method"), "html", null, true);
             echo " ";
             echo twig_escape_filter($this->env, $this->getAttribute($context["alumno"], "__GET", array(0 => "segundo_apellido"), "method"), "html", null, true);
@@ -97,7 +128,11 @@ class __TwigTemplate_cc3a279ae488db115efd0adb0be93522e53f23fc74def4ad7aeb78e2bfc
 
     public function getDebugInfo()
     {
+<<<<<<< HEAD
         return array (  83 => 26,  69 => 20,  65 => 19,  59 => 18,  56 => 17,  52 => 16,  38 => 4,  35 => 3,  29 => 2,  11 => 1,);
+=======
+        return array (  83 => 26,  67 => 18,  63 => 17,  57 => 16,  54 => 15,  50 => 14,  38 => 4,  35 => 3,  29 => 2,  11 => 1,);
+>>>>>>> refs/remotes/origin/master
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -114,6 +149,7 @@ class __TwigTemplate_cc3a279ae488db115efd0adb0be93522e53f23fc74def4ad7aeb78e2bfc
 {% block title %}Inicio{% endblock %}
 {% block body %}
 \t<table class=\"table table-hover\">
+<<<<<<< HEAD
 \t\t<thead>
 \t\t\t<tr>
 \t\t\t\t<th></th>
@@ -128,6 +164,20 @@ class __TwigTemplate_cc3a279ae488db115efd0adb0be93522e53f23fc74def4ad7aeb78e2bfc
 \t{% for alumno in alumnos %}
 \t\t<tr>
 \t\t\t<td><input id=\"{{ alumno.__GET('id_alumno') }}\" type=\"checkbox\" name=\"usuario{{ alumno.__GET('id_alumno') }}\"></td>
+=======
+\t<thead>
+\t\t<tr>
+\t\t\t<th></th>
+\t\t\t<th>NOMBRE</th>
+\t\t\t<th>APELLIDOS</th>
+\t\t\t<th></th>
+\t\t</tr>
+\t</thead>
+\t<tbody>
+\t{% for alumno in alumnos %}
+\t\t<tr>
+\t\t\t<td><input type=\"checkbox\" id=\"{{ alumno.__GET('id_alumno') }}\" name=\"usuario{{ alumno.__GET('id_alumno') }}\"</td>
+>>>>>>> refs/remotes/origin/master
 \t\t\t<td>{{ alumno.__GET('nombre') }}</td>
 \t\t\t<td>{{ alumno.__GET('primer_apellido') }} {{ alumno.__GET('segundo_apellido') }}</td>
 \t\t\t<td>
