@@ -19,10 +19,6 @@ $app->get('/', function ($request, $response, $args) use($model,$lcn,$aln) {
 
 $app->post('/', function ($request, $response, $args) use($model,$lcn,$aln) {
 
-
-
-
-
 })->setName('inicio');
 
 $app->get('/acercade', function ($request, $response, $args) use ($app){

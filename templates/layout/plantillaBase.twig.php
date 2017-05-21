@@ -30,6 +30,10 @@
 	<div align="center">
 		&copy;2017 Todos los derechos reservados
 	</div>
+<<<<<<< HEAD
+	<script type="text/javascript" src="{{base_url()}}/../js/otorgarLicencias.js?tiempo=<?=tiempo();?>"></script>
+=======
 	<script type="text/javascript" src="{{base_url()}}/../js/otorgarLicencias.js"></script>
+>>>>>>> refs/remotes/origin/master
 </body>
 </html>

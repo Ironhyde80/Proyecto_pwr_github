@@ -1,6 +1,26 @@
+<<<<<<< HEAD
+var helper = "../helper/funcionesAjax.php";
+$( document ).ready(function() {
+
+var arrayID = [];
+	$("#agregarLicencia").bind('click',function(){
+
+		$("#tbody tr input[type=checkbox]:checked").each(function (){
+			console.log($(this).attr('id'));
+        	arrayID.push($(this).attr('id'));
+    	});
+    	/*ajaxGeneral('POST',helper,{'action':'anadirLicencia',idUsuario:arrayID},function(){
+    		alert('Licencias actualizadas');
+    	});*/
+    	console.log(arrayID);
+	});
+
+});
+=======
 $( document ).ready(){
 
 };
+>>>>>>> refs/remotes/origin/master
 
 function ajaxGeneral(tipo, url, data, func){
 	$.ajax({

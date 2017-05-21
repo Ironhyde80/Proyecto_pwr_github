@@ -94,7 +94,11 @@ class __TwigTemplate_8afbab084251e1411bb165a4f590fd9b622ae97385592f1d9233cb36e2d
 \t<script type=\"text/javascript\" src=\"";
         // line 33
         echo twig_escape_filter($this->env, $this->env->getExtension('Slim\Views\TwigExtension')->baseUrl(), "html", null, true);
+<<<<<<< HEAD
         echo "/../js/otorgarLicencias.js\"></script>
+=======
+        echo "/../js/otorgarLicencias.js?tiempo=<?=tiempo();?>\"></script>
+>>>>>>> refs/remotes/origin/vista
 </body>
 </html>";
     }
@@ -167,7 +171,11 @@ class __TwigTemplate_8afbab084251e1411bb165a4f590fd9b622ae97385592f1d9233cb36e2d
 \t<div align=\"center\">
 \t\t&copy;2017 Todos los derechos reservados
 \t</div>
+<<<<<<< HEAD
 \t<script type=\"text/javascript\" src=\"{{base_url()}}/../js/otorgarLicencias.js\"></script>
+=======
+\t<script type=\"text/javascript\" src=\"{{base_url()}}/../js/otorgarLicencias.js?tiempo=<?=tiempo();?>\"></script>
+>>>>>>> refs/remotes/origin/vista
 </body>
 </html>", "layout/plantillaBase.twig.php", "C:\\wamp64\\www\\Proyecto_pwr_github\\templates\\layout\\plantillaBase.twig.php");
     }
