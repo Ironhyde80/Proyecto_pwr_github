@@ -11,6 +11,8 @@ $app->get('/', function ($request, $response, $args) use($model,$lcn,$aln) {
     if(isset($_SESSION['user'])){
       $this->logger->info("Slim-Skeleton '/' route");
       $data= array('alumnos' => $model->ObtenerAlumnos(),
+          'licencias'=>$model->Obtener_licencias(),
+          'licencia'=>$lcn,
           'alumno' => $aln);
       // Render index view
       return $this->view->render($response,'index.php',$data);
