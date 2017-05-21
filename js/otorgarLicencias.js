@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 var helper = "../helper/funcionesAjax.php";
 $( document ).ready(function() {
 
@@ -16,11 +16,6 @@ var arrayID = [];
 	});
 
 });
-=======
-$( document ).ready(){
-
-};
->>>>>>> refs/remotes/origin/master
 
 function ajaxGeneral(tipo, url, data, func){
 	$.ajax({
