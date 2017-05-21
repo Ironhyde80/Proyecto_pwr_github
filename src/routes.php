@@ -10,27 +10,15 @@ $app->get('/', function ($request, $response, $args) use($model,$lcn,$aln) {
     // Sample log message
     $this->logger->info("Slim-Skeleton '/' route");
     $data= array('alumnos' => $model->ObtenerAlumnos(),
-<<<<<<< HEAD
-        'alumno' => $aln);
-=======
         'alumno' => $aln,
         'licencias'=> $model->Obtener_licencias(),
         'licencia'=>$lcn);
->>>>>>> refs/remotes/origin/master
     // Render index view
     return $this->view->render($response,'index.php',$data);
 })->setName('Inicio');
 
 $app->post('/', function ($request, $response, $args) use($model,$lcn,$aln) {
 
-
-
-
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> refs/remotes/origin/master
 })->setName('inicio');
 
 $app->get('/acercade', function ($request, $response, $args) use ($app){
