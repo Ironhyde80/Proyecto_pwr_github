@@ -4,23 +4,17 @@ $aln = new Alumnos();
 $lcn = new Licencias();
 $prof = new Profesores();
 $model = new Modelo();
-
-
 $app->get('/', function ($request, $response, $args) use($model,$lcn,$aln) {
     // Sample log message
     $this->logger->info("Slim-Skeleton '/' route");
     $data= array('alumnos' => $model->ObtenerAlumnos(),
-        'alumno' => $aln,
-        'licencias'=> $model->Obtener_licencias(),
-        'licencia'=>$lcn);
+        'alumno' => $aln);
     // Render index view
     return $this->view->render($response,'index.php',$data);
 })->setName('Inicio');
-
 $app->post('/', function ($request, $response, $args) use($model,$lcn,$aln) {
 
 })->setName('inicio');
-
 $app->get('/acercade', function ($request, $response, $args) use ($app){
     $fecha = date('l dS \o\f F Y h:i:s A');
     $data = array('nombre' => 'Ayoze Pacheco Herrera y Gustavo Lopez Garcia',
@@ -29,43 +23,32 @@ $app->get('/acercade', function ($request, $response, $args) use ($app){
     $body = $this->view->fetch('acercade.twig.php', $data);
     return $response->write($body);
 })->setName('Acerca_de');
-
 $app->get('/login', function ($request, $response, $args) {
     // Sample log message
     $this->logger->info("Aqui se haran los login");
-
     // Render index view
     return $this->view->render($response,'login.twig.php');
 })->setName('Login');
-
 $app->get('/logout', function ($request, $response, $args) {
     // Sample log message
     $this->logger->info("Aqui se haran los logout");
-
     // Render index view
     return $this->view->render($response,'logout.twig.php');
 })->setName('Logout');
-
 $app->get('/upload', function ($request, $response, $args) {
     // Sample log message
     $this->logger->info("Aqui se haran los uploads");
-
     // Render index view
     return $this->view->render($response,'upload.twig.php');
 })->setName('Upload');
-
 $app->post('/upload', function ($request, $response, $args)  use ($aln, $model, $prof, $lcn){
     if($_FILES['fichero']['error']==0){
-
         $nombre=trim($_FILES['fichero']['name']);
         $temporal= $_FILES['fichero']['tmp_name'];
         $subidos= 'C:\wamp64\www\Proyecto_pwr_github\\';
-
         move_uploaded_file ( (string)$temporal , $subidos.$nombre );
-
         if($_FILES['fichero']['type']=='text/xml'){
             $documento= simplexml_load_file($subidos, $nombre);
-
              foreach ($documento->Product_Key->Key as $k) {
                   $lcn->__SET('nombre',$documento->Product_Key['Name']);
                   //$lcn-> __SET('nombre',(string)$k['Name']);
