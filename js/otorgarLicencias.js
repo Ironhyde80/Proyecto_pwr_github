@@ -1,17 +1,17 @@
 var helper = "../helper/funcionesAjax.php";
 $( document ).ready(function() {
 
-var arrayID = [];
-	$("#agregarLicencia").bind('click',function(){
 
+	$("#agregarLicencia").bind('click',function(){
+		var arrayID = [];
 		$("#tbody tr input[type=checkbox]:checked").each(function (){
-			console.log($(this).attr('id'));
         	arrayID.push($(this).attr('id'));
     	});
-    	/*ajaxGeneral('POST',helper,{'action':'anadirLicencia',idUsuario:arrayID},function(){
+    	ajaxGeneral('POST',helper,{'action':'anadirLicencia',idUsuario:arrayID},function(request){
+    		console.log(request);
     		alert('Licencias actualizadas');
-    	});*/
-    	console.log(arrayID);
+    	});
+    	
 	});
 
 });

@@ -11,7 +11,7 @@
 	</center>
 <br><center>
 	<label for="login">Contraseña:</label>
-	<input type="text" name="clave" id="clave" placeholder="Ingrese la clave">
+	<input type="password" name="clave" id="clave" placeholder="Ingrese la clave">
 	</center>
 	<br>
 	<center>

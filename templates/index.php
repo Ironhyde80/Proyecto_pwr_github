@@ -19,10 +19,18 @@
 			<td>{{ alumno.__GET('nombre') }}</td>
 			<td>{{ alumno.__GET('primer_apellido') }} {{ alumno.__GET('segundo_apellido') }}</td>
 			<td>
+			<td>
+				<select id="{{alumno.__GET('id_alumno')}}"></select>
+				
+			</td>
+			<td>
 				<input type="submit" value="Más informacion" class="btn btn-info">
 			</td>
 		</tr>
 	{% endfor %}
 	</tbody>
 	</table>
+	{% for a in licencias %}
+		<p>{{a.__GET('nombre')}}</p>
+	{% endfor %}
 {% endblock %}

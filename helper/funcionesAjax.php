@@ -1,13 +1,11 @@
-<?php
+<?php 
 require "../models/modelo.php";
 $obj = new modelo();
-
-
-switch ($_POST['action'] {
+switch ($_POST['action']){
 	case 'anadirLicencia':
-		$obj->asignarLicencia($_POST['idUsuario']);
+		echo $obj->asignarLicencia($_POST['idUsuario']);
 		break;
-
+	
 	default:
 		# code...
 		break;

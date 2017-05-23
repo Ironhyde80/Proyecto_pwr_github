@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div class="well" align="center"><h2>FICHA DE CLASE:</h2>
-	{% if usuario == false %}
+	{% if user == false %}
 		<a href="{{ path_for('Login') }}">Login</a>&nbsp;|&nbsp;
 		<a href="{{ path_for('Acerca_de') }}">Acerca de</a>&nbsp;|&nbsp;
 	{% else %}

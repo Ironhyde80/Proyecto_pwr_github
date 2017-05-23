@@ -45,7 +45,7 @@ class __TwigTemplate_87ea54a0569c1f058ee3c22860d345205526d8964cdff5a9c227f3acbff
 \t</center>
 <br><center>
 \t<label for=\"login\">Contraseña:</label>
-\t<input type=\"text\" name=\"clave\" id=\"clave\" placeholder=\"Ingrese la clave\">
+\t<input type=\"password\" name=\"clave\" id=\"clave\" placeholder=\"Ingrese la clave\">
 \t</center>
 \t<br>
 \t<center>
@@ -94,7 +94,7 @@ class __TwigTemplate_87ea54a0569c1f058ee3c22860d345205526d8964cdff5a9c227f3acbff
 \t</center>
 <br><center>
 \t<label for=\"login\">Contraseña:</label>
-\t<input type=\"text\" name=\"clave\" id=\"clave\" placeholder=\"Ingrese la clave\">
+\t<input type=\"password\" name=\"clave\" id=\"clave\" placeholder=\"Ingrese la clave\">
 \t</center>
 \t<br>
 \t<center>
